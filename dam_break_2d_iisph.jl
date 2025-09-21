@@ -1,5 +1,7 @@
 # 2D dam break simulation using implicit incompressible SPH (IISPH)
 using TrixiParticles
+using ThreadPinning
+pinthreads(:numa);
 
 # Load setup from dam break example
 trixi_include(@__MODULE__,
