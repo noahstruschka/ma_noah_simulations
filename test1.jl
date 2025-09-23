@@ -1,7 +1,7 @@
 # 2D dam break simulation using implicit incompressible SPH (IISPH)
 using TrixiParticles
 using ThreadPinning
-pinthreads(:numa);
+pinthreads(:numa)
 using OrdinaryDiffEq
 
 # Size parameters
