@@ -2,7 +2,7 @@
 using TrixiParticles
 using OrdinaryDiffEq
 using ThreadPinning
-pinthreads(:numa);
+pinthreads(:numa)
 
 # H is equal to 0.6 and fluid particle spacing is H / 40 = 0.6 / 40 = 0.015
 # We want the fluid particle spacing to be equal to H / 160 = 0.00375

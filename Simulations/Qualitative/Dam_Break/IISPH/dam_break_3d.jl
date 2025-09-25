@@ -2,7 +2,7 @@
 using TrixiParticles
 using OrdinaryDiffEq
 using ThreadPinning
-
+pinthreads(:numa)
 
 # H is equal to 0.6 and fluid particle spacing is H / 40 = 0.6 / 40 = 0.015
 # For the 3D simulation We want the fluid particle spacing to be equal to H / 80 = 0.0075
@@ -16,7 +16,6 @@ trixi_include(@__MODULE__,
 
 # IISPH doesn't require a large compact support like WCSPH and performs worse with a typical
 # smoothing length used for WCSPH.
-smoothing_length = 1.0 * fluid_particle_spacing
 smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 
 # This kernel slightly overestimates the density, so we reduce the mass slightly
