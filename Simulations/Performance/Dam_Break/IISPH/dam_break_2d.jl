@@ -29,11 +29,11 @@ neighborhood_search = GridNeighborhoodSearch{2}(; cell_list)
 boundary_density_calculator = PressureZeroing()
 
 # Change the parameters
-#time_step = 1e-3
-min_iterations = 2
-omega = 0.5
+time_step = 2e-3
+min_iterations = 3
+omega = 0.4
 density_error = 0.1
-smoothing_length = 1.0
+smoothing_length = 1.2
 
 
 # Overwrite the saving_callback such that we only get the first and the last time step as
@@ -45,11 +45,11 @@ callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
 
 # Run the iisph dam break simulation with these changes
 trixi_include(@__MODULE__,
-              joinpath(examples_dir(), "fluid", "dam_break_2d.jl"),
+              joinpath(examples_dir(), "fluid", "dam_break_2d_iisph.jl"),
               neighborhood_search=neighborhood_search,
               boundary_density_calculator=boundary_density_calculator,
               callbacks=callbacks,
-              #time_step=time_step,
+              time_step=time_step,
               min_iterations=min_iterations,
               omega=omega,
               density_error=density_error,

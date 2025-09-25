@@ -2,6 +2,7 @@
 using TrixiParticles
 using OrdinaryDiffEq
 using ThreadPinning
+pinthreads(:numa);
 
 # H is equal to 0.6 and fluid particle spacing is H / 40 = 0.6 / 40 = 0.015
 # We want the fluid particle spacing to be equal to H / 160 = 0.00375
@@ -32,5 +33,5 @@ trixi_include(@__MODULE__,
               tspan=tspan,
               density_diffusion=density_diffusion,
               boundary_model=boundary_model,
-              parallelization_backend=PolyesterBackend(),
+              #parallelization_backend=PolyesterBackend(),
               boundary_density_calculator=boundary_density_calculator)
