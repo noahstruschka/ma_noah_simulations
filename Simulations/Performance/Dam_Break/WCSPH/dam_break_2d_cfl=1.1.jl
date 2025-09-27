@@ -26,16 +26,17 @@ neighborhood_search = GridNeighborhoodSearch{2}(; cell_list)
 density_diffusion = DensityDiffusionMolteniColagrossi(delta=0.1)
 
 # Change Parameters
-smoothing_length = 1.75 * fluid_particle_spacing # TODO
-stepsize_callback = StepsizeCallback(cfl=0.9) # TODO
+smoothing_length = 1.75 * fluid_particle_spacing
+stepsize_callback = StepsizeCallback(cfl=1.1)
 
 # Run the dam break simulation with this neighborhood search
 trixi_include(@__MODULE__,
               joinpath(examples_dir(), "fluid", "dam_break_2d.jl"),
-              #neighborhood_search=neighborhood_search,
+              neighborhood_search=neighborhood_search,
               fluid_particle_spacing=fluid_particle_spacing,
               tspan=tspan,
               density_diffusion=density_diffusion,
               boundary_model=boundary_model,
-              #parallelization_backend=PolyesterBackend(),
-              boundary_density_calculator=boundary_density_calculator)
+              parallelization_backend=PolyesterBackend(),
+              boundary_density_calculator=boundary_density_calculator,
+              stepsize_callback=stepsize_callback)

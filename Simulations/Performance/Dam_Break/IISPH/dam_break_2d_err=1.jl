@@ -29,11 +29,11 @@ neighborhood_search = GridNeighborhoodSearch{2}(; cell_list)
 boundary_density_calculator = PressureZeroing()
 
 # Change the parameters
-time_step = 1e-3 # TODO
-min_iterations = 2 # TODO
-omega = 0.4 # TODO
-density_error = 0.1 # TODO
-smoothing_length = 1.0 # TODO
+time_step = 1e-3
+min_iterations = 2
+omega = 0.4
+density_error = 1
+smoothing_length = 1.0
 
 
 # Overwrite the saving_callback such that we only get the first and the last time step as

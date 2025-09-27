@@ -22,8 +22,12 @@ max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
 neighborhood_search = GridNeighborhoodSearch{2}(; cell_list)
 
+# Use MolteniColagrossi as density diffusion
+density_diffusion = DensityDiffusionMolteniColagrossi(delta=0.1)
 
 # Change Parameters
+smoothing_length = 1.75 * fluid_particle_spacing
+stepsize_callback = StepsizeCallback(cfl=1.2)
 
 # Run the dam break simulation with this neighborhood search
 trixi_include(@__MODULE__,
@@ -34,4 +38,5 @@ trixi_include(@__MODULE__,
               density_diffusion=density_diffusion,
               boundary_model=boundary_model,
               parallelization_backend=PolyesterBackend(),
-              boundary_density_calculator=boundary_density_calculator)
+              boundary_density_calculator=boundary_density_calculator,
+              stepsize_callback=stepsize_callback)
