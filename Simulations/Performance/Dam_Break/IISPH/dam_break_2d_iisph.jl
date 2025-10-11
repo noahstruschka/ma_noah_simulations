@@ -1,5 +1,6 @@
 using TrixiParticles
 using OrdinaryDiffEq
+using ThreadPinning
 
 # Size parameters
 H = 0.6
