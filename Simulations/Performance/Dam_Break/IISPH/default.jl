@@ -1,6 +1,10 @@
 using TrixiParticles
 using OrdinaryDiffEq
 using ThreadPinning
+#pinthreads(:numa)
+
+# Resolution
+resolution = 40
 
 # Size parameters
 H = 0.6
@@ -8,7 +12,7 @@ W = 2 * H
 
 # ==========================================================================================
 # ==== Resolution
-fluid_particle_spacing = H / 40
+fluid_particle_spacing = H / resolution
 
 # Change spacing ratio to 3 and boundary layers to 1 when using Monaghan-Kajtar boundary model
 boundary_layers = 4
@@ -28,12 +32,18 @@ tank_size = (floor(5.366 * H / boundary_particle_spacing) * boundary_particle_sp
 
 fluid_density = 1000.0
 sound_speed = 20 * sqrt(gravity * H)
-state_equation = nothing # StateEquationCole(; sound_speed, reference_density=fluid_density,
-                                  # exponent=1, clip_negative_pressure=false)
+state_equation = StateEquationCole(; sound_speed, reference_density=fluid_density,
+                                   exponent=1, clip_negative_pressure=false)
 
 tank = RectangularTank(fluid_particle_spacing, initial_fluid_size, tank_size, fluid_density,
                        n_layers=boundary_layers, spacing_ratio=spacing_ratio,
                        acceleration=(0.0, -gravity), state_equation=state_equation)
+
+# This kernel slightly overestimates the density, so we reduce the mass slightly
+# to obtain a density slightly below the reference density.
+# Otherwise, the fluid will jump slightly at the beginning of the simulation.
+tank.fluid.mass .*= 0.995
+
 
 # ==========================================================================================
 # ==== Fluid
@@ -47,13 +57,18 @@ viscosity_fluid = ViscosityAdami(; nu)
 # Use IISPH as fluid system
 time_step = 1e-3
 omega = 0.4
+min_iterations = 2
+max_iterations = 30
+max_error = 0.1
+
 fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,
                                                smoothing_length, fluid_density,
                                                viscosity=viscosity_fluid,
                                                acceleration=(0.0, -gravity),
-                                               min_iterations=2,
-                                               max_iterations=30,
+                                               min_iterations=min_iterations,
+                                               max_iterations=max_iterations,
                                                omega=omega,
+                                               max_error=max_error,
                                                time_step=time_step)
 
 # ==========================================================================================
@@ -77,8 +92,9 @@ boundary_system = WallBoundarySystem(tank.boundary, boundary_model,
 # ==== Simulation
 # `nothing` will automatically choose the best update strategy. This is only to be able
 # to change this with `trixi_include`.
+neighborhood_search = GridNeighborhoodSearch{2}(update_strategy=nothing)
 semi = Semidiscretization(fluid_system, boundary_system,
-                          neighborhood_search=GridNeighborhoodSearch{2}(update_strategy=nothing),
+                          neighborhood_search=neighborhood_search,
                           parallelization_backend=PolyesterBackend())
 ode = semidiscretize(semi, tspan)
 
@@ -95,7 +111,6 @@ use_reinit = false
 density_reinit_cb = use_reinit ?
                     DensityReinitializationCallback(semi.systems[1], interval=10) :
                     nothing
-# stepsize_callback = StepsizeCallback(cfl=0.9)
 
 callbacks = CallbackSet(info_callback, saving_callback, extra_callback,
                         extra_callback2, density_reinit_cb)

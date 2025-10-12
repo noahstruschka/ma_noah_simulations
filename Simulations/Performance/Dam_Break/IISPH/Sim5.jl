@@ -5,7 +5,7 @@ using ThreadPinning
 pinthreads(:numa)
 
 simulation = "Dam_Break"
-method = "WCSPH"
+method = "IISPH"
 # Load the iisph example
 trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), sol=nothing, ode=nothing)
 
@@ -16,8 +16,8 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), s
 # We want the fluid particle spacing to be equal to 0.00375 which is the case for resolution = 160
 
 # resolution = 40
-resolution = 60
-# resolution = 80
+# resolution = 60
+resolution = 80
 # resolution = 160
 
 
@@ -28,28 +28,13 @@ max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
 #neighborhood_search = GridNeighborhoodSearch{2}(; cell_list)
 
-
-# ==========================================================================================
-# Change the parameters
-alpha = 0.02
-smoothing_length = 2.0 * fluid_particle_spacing
-smoothing_kernel = WendlandC2Kernel{2}()
-
-boundary_density_calculator = PressureZeroing()
-
-
-# WCSPH parameters
-cfl=1.0
-
-# Use MolteniColagrossi as density diffusion
-density_diffusion = DensityDiffusionMolteniColagrossi(delta=0.1)
+fluid_particle_spacing = H / resolution
 
 
 # ==========================================================================================
 # Overwrite the saving_callback such that we only get the first and the last time step as
 # result
 saving_callback = SolutionSavingCallback(dt=100, prefix=solution_prefix)
-stepsize_callback = StepsizeCallback(cfl=1.0)
 # Save at certain timepoints which allows comparison to the results of Marrone et al.,
 # i.e. t(g/H)^(1/2) = (1.5, 2.36, 3.0, 5.7, 6.45).
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.
@@ -58,7 +43,24 @@ saving_paper = SolutionSavingCallback(save_times=[0.0, 1.5, 2.36, 3.0, 5.7, 6.45
                                       prefix="marrone_times")
 
 # Overwrite the callbacks
-callbacks = CallbackSet(info_callback, stepsize_callback, saving_callback, saving_paper)
+callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
+
+
+# ==========================================================================================
+# Change the parameters
+alpha = 0.02
+smoothing_length = 1.0 * fluid_particle_spacing
+smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+
+boundary_density_calculator = PressureZeroing()
+
+
+# IISPH parameters
+time_step = 1e-3
+omega = 0.5
+min_iterations = 2
+max_iterations = 30
+max_error = 0.1
 
 
 
@@ -76,3 +78,10 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"),
                             min_iterations=min_iterations,
                             max_iterations=max_iterations,
                             max_error=max_error)
+
+plt = plot(sol)
+file_name = splitext(basename(@__FILE__))[1]
+path = joinpath(pwd(), "..", "Results", "Performance", simulation, method, file_name)
+plot_name = file_name * "_" * string(resolution)
+full_path = joinpath(path, plot_name)
+savefig(plt, full_path)

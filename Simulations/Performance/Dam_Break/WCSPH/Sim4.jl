@@ -2,7 +2,7 @@
 using TrixiParticles
 using OrdinaryDiffEq
 using ThreadPinning
-pinthreads(:numa)
+#pinthreads(:numa)
 
 simulation = "Dam_Break"
 method = "WCSPH"
@@ -16,9 +16,11 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), s
 # We want the fluid particle spacing to be equal to 0.00375 which is the case for resolution = 160
 
 # resolution = 40
-resolution = 60
-# resolution = 80
+# resolution = 60
+ resolution = 80
 # resolution = 160
+
+fluid_particle_spacing = H / resolution
 
 
 # ==========================================================================================
@@ -35,11 +37,11 @@ alpha = 0.02
 smoothing_length = 2.0 * fluid_particle_spacing
 smoothing_kernel = WendlandC2Kernel{2}()
 
-boundary_density_calculator = PressureZeroing()
+boundary_density_calculator = AdamiPressureExtrapolation()
 
 
 # WCSPH parameters
-cfl=1.0
+cfl = 1.2
 
 # Use MolteniColagrossi as density diffusion
 density_diffusion = DensityDiffusionMolteniColagrossi(delta=0.1)
@@ -49,7 +51,7 @@ density_diffusion = DensityDiffusionMolteniColagrossi(delta=0.1)
 # Overwrite the saving_callback such that we only get the first and the last time step as
 # result
 saving_callback = SolutionSavingCallback(dt=100, prefix=solution_prefix)
-stepsize_callback = StepsizeCallback(cfl=1.0)
+stepsize_callback = StepsizeCallback(cfl=cfl)
 # Save at certain timepoints which allows comparison to the results of Marrone et al.,
 # i.e. t(g/H)^(1/2) = (1.5, 2.36, 3.0, 5.7, 6.45).
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.
@@ -71,8 +73,11 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"),
                             smoothing_length=smoothing_length,
                             smoothing_kernel=smoothing_kernel,
                             boundary_density_calculator=boundary_density_calculator,
-                            time_step=time_step,
-                            omega=omega,
-                            min_iterations=min_iterations,
-                            max_iterations=max_iterations,
-                            max_error=max_error)
+                            cfl=cfl)
+
+plt = plot(sol)
+file_name = splitext(basename(@__FILE__))[1]
+path = joinpath(pwd(), "..", "Results", "Performance", simulation, method, file_name)
+plot_name = file_name * "_" * string(resolution)
+full_path = joinpath(path, plot_name)
+savefig(plt, full_path)
