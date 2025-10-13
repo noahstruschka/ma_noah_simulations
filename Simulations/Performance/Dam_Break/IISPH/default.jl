@@ -1,7 +1,7 @@
 using TrixiParticles
 using OrdinaryDiffEq
 using ThreadPinning
-#pinthreads(:numa)
+pinthreads(:numa)
 
 # Resolution
 resolution = 40

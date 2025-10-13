@@ -3,7 +3,7 @@ using TrixiParticles
 using OrdinaryDiffEq
 using Plots
 using ThreadPinning
-pinthreads(:numa)
+#pinthreads(:numa)
 
 simulation = "Dam_Break"
 method = "IISPH"
@@ -18,9 +18,9 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), s
 
 # resolution = 40 # 3200 fluid particles
 # resolution = 60 # 7200 fluid particles
-# resolution = 80 # 12.800 fluid particles
- resolution = 160 # ?? fluid particles
-#resolution = 320 # 204800 fluid particles
+ resolution = 80 # 12.800 fluid particles
+# resolution = 160 # ?? fluid particles
+# resolution = 320 # ?? fluid particles
 
 fluid_particle_spacing = H / resolution
 
@@ -60,10 +60,10 @@ boundary_density_calculator = PressureZeroing()
 
 # IISPH parameters
 time_step = 1e-3
-omega = 0.4
+omega = 0.6
 min_iterations = 2
 max_iterations = 30
-max_error = 0.1
+max_error = 0.5
 
 
 

@@ -1,0 +1,171 @@
+Simulation 1:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 1e-3
+        omega = 0.4
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 0.1
+    Time:
+        202 Sekunden
+
+
+Simulation 2:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 0.0015
+        omega = 0.4
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 0.1
+    Time:
+        252 Sekunden
+
+
+Simulation 3:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 0.00175
+        omega = 0.4
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 0.1
+    Time:
+        252 Sekunden
+
+Simulation 4:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 0.0018
+        omega = 0.4
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 0.1
+    Time:
+        249 Sekunden
+
+Simulation 5:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 1e-3
+        omega = 0.5
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 0.1
+    Time:
+        159 Sekunden
+
+Simulation 6:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 1e-3
+        omega = 0.6
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 0.1
+
+    Time:
+        126 Sekunden
+
+
+Simulation 7:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 1e-3
+        omega = 0.7
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 0.1
+
+
+    Time:
+        101 Sekunden
+
+Simulation 8:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 1e-3
+        omega = 0.4
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 0.5
+
+
+    Time:
+        84 Sekunden
+
+Simulation 9:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 1e-3
+        omega = 0.6
+        min_iterations = 2
+        max_iterations = 30
+        max_error = 1.0
+
+
+    Time:
+        94 Sekunden
+
+Simulation 10:
+    Parameters:
+        alpha = 0.02
+        smoothing_length = 1.0 * fluid_particle_spacing
+        smoothing_kernel = SchoenbergCubicSplineKernel{2}()
+        boundary_density_calculator = PressureZeroing()
+
+        # IISPH parameters
+        time_step = 1e-3
+        omega = 0.4
+        min_iterations = 1
+        max_iterations = 30
+        max_error = 0.1
+
+
+    Time:
+        214 Sekunden
