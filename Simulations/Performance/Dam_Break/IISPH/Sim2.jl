@@ -3,12 +3,13 @@ using TrixiParticles
 using OrdinaryDiffEq
 using Plots
 using ThreadPinning
-#pinthreads(:numa)
+pinthreads(:numa)
 
+folder = "Simulations"
 simulation = "Dam_Break"
 method = "IISPH"
 # Load the iisph example
-trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), sol=nothing, ode=nothing)
+trixi_include(joinpath(pwd(),folder, "Performance", simulation, method, "default.jl"), sol=nothing, ode=nothing)
 
 # =========================================================================================
 # Change Resolution
@@ -18,8 +19,8 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), s
 
 # resolution = 40 # 3200 fluid particles
 # resolution = 60 # 7200 fluid particles
-resolution = 80 # 12.800 fluid particles
-# resolution = 160 # ?? fluid particles
+# resolution = 80 # 12.800 fluid particles
+ resolution = 160 # ?? fluid particles
 # resolution = 320 # ?? fluid particles
 
 fluid_particle_spacing = H / resolution
@@ -68,7 +69,7 @@ max_error = 0.1
 
 
 # Run simulation with updated parameters
-trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"),
+trixi_include(joinpath(pwd(),folder, "Performance", simulation, method, "default.jl"),
                             resolution=resolution,
                             neighborhood_search=neighborhood_search,
                             callbacks=callbacks,

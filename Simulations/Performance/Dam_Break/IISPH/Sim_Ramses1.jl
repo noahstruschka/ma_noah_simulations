@@ -5,11 +5,13 @@ using Plots
 using ThreadPinning
 pinthreads(:numa)
 
+
 folder = "Simulations"
 simulation = "Dam_Break"
 method = "IISPH"
+
 # Load the iisph example
-trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), sol=nothing, ode=nothing)
+trixi_include(joinpath(pwd(), folder, "Performance", simulation, method, "default.jl"), sol=nothing, ode=nothing)
 
 # =========================================================================================
 # Change Resolution
@@ -19,9 +21,9 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), s
 
 # resolution = 40 # 3200 fluid particles
 # resolution = 60 # 7200 fluid particles
-resolution = 80 # 12.800 fluid particles
+# resolution = 80 # 12.800 fluid particles
 # resolution = 160 # ?? fluid particles
-# resolution = 320 # ?? fluid particles
+resolution = 320 # 204800 fluid particles
 
 fluid_particle_spacing = H / resolution
 
@@ -31,7 +33,7 @@ fluid_particle_spacing = H / resolution
 min_corner = minimum(tank.boundary.coordinates, dims=2)
 max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
-#neighborhood_search = GridNeighborhoodSearch{2}(; cell_list)
+neighborhood_search = GridNeighborhoodSearch{2}(; cell_list)
 
 
 # ==========================================================================================
@@ -60,7 +62,7 @@ boundary_density_calculator = PressureZeroing()
 
 
 # IISPH parameters
-time_step = 0.00175
+time_step = 0.0004
 omega = 0.4
 min_iterations = 2
 max_iterations = 30
@@ -69,7 +71,7 @@ max_error = 0.1
 
 
 # Run simulation with updated parameters
-trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"),
+trixi_include(joinpath(pwd(), folder, "Performance", simulation, method, "default.jl"),
                             resolution=resolution,
                             neighborhood_search=neighborhood_search,
                             callbacks=callbacks,
@@ -83,10 +85,24 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"),
                             max_iterations=max_iterations,
                             max_error=max_error)
 
+boundary_dict = Dict(
+    PressureZeroing => "PZ",
+    PressureMirroring => "PM",
+    AdamiPressureExtrapolation => "APE",
+    BernoulliPressureExtrapolation => "BPE",
+   # PressureBoundaries => "PB"
+)
+ic = vtk2trixi("out/marrone_times_fluid_1_4948.vtu")
+velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
+plt2 = plot(ic, zcolor=velocity_magnitude', color=:coolwarm)
 
-plt = plot(sol)
+plt1 = plot(sol)
 file_name = splitext(basename(@__FILE__))[1]
-path = joinpath(pwd(), "..", "Results", "Performance", simulation, method, file_name)
-plot_name = file_name * "_" * string(resolution)
-full_path = joinpath(path, plot_name)
-savefig(plt, full_path)
+path = joinpath(pwd(), "Results", "Performance", simulation, method, file_name)
+density_calculator_boundary = boundary_dict[typeof(boundary_density_calculator)]
+plot_name1 = file_name * "_" * string(resolution) * "_" * density_calculator_boundary
+plot_name2 = plot_name1 * "_"
+full_path1 = joinpath(path, plot_name1)
+full_path2 = joinpath(path, plot_name2)
+savefig(plt1, full_path1)
+savefig(plt2, full_path2)

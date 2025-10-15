@@ -5,10 +5,12 @@ using Plots
 using ThreadPinning
 pinthreads(:numa)
 
+folder = "Simulations"
 simulation = "Dam_Break"
 method = "IISPH"
+
 # Load the iisph example
-trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"), sol=nothing, ode=nothing)
+trixi_include(joinpath(pwd(), folder, "Performance", simulation, method, "default.jl"), sol=nothing, ode=nothing)
 
 # =========================================================================================
 # Change Resolution
@@ -68,7 +70,7 @@ max_error = 0.1
 
 
 # Run simulation with updated parameters
-trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"),
+trixi_include(joinpath(pwd(),folder, "Performance", simulation, method, "default.jl"),
                             resolution=resolution,
                             neighborhood_search=neighborhood_search,
                             callbacks=callbacks,
@@ -85,7 +87,7 @@ trixi_include(joinpath(pwd(),"Performance", simulation, method, "default.jl"),
 
 plt = plot(sol)
 file_name = splitext(basename(@__FILE__))[1]
-path = joinpath(pwd(), "..", "Results", "Performance", simulation, method, file_name)
+path = joinpath(pwd(), "Results", "Performance", simulation, method, file_name)
 plot_name = file_name * "_" * string(resolution)
 full_path = joinpath(path, plot_name)
 savefig(plt, full_path)
