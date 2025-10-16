@@ -1,0 +1,70 @@
+
+ImplicitIncompressibleSPHSystem
+
+PressureZeroing
+    Time Step: 0.0001
+        Omega: 0.4
+            total time: 32.4
+            pressure solve iterations: 31.2k
+        Omega: 0.5
+            total time: 318s
+            pressure solve iterations: 28.6k
+        Omega: 0.6
+            total time: 313s
+            pressure solve iterations: 28.2k
+        Omega: 0.7
+            total time: 312s
+            pressure solve iterations: 28.2k
+        Omega: 0.8
+            total time: 302
+            pressure solve iterations: 28.2k
+    Time Step: 0.0002
+        Omega: 0.4
+            total time: 313s
+            pressure solve iterations: 47.8k
+        Omega: 0.5
+            total time: 251s
+            pressure solve iterations: 32.5k
+        Omega: 0.6
+            total time: 200
+            pressure solve iterations: 22.2k
+        Omega: 0.7
+            total time: 177s
+            pressure solve iterations: 16.8k
+        Omega: 0.8
+            total time: 165s !!!!!!
+            pressure solve iterations: 14.5k
+
+    Time Step: 0.0003
+        Omega: 0.4
+            total time: 404s
+            pressure solve iterations: 70.5k
+        Omega: 0.5
+            total time: 299s
+            pressure solve iterations: 47.6k
+        Omega: 0.6
+            total time: 222s
+            pressure solve iterations: 32.2k
+        Omega: 0.7
+            total time: 167s !!!!!!!
+            pressure solve iterations: 21.0k
+        Omega: 0.8
+            Failed
+
+    Time Step: 0.0004
+        Omega: 0.4
+            total time: 451ms
+            pressure solve iterations: 83.8k
+        Omega: 0.5
+            total time: 347
+            pressure solve iterations: 61.7k
+        Omega: 0.6
+            total time: 266s
+            pressure solve iterations: 42.6k
+        Omega: 0.7
+            total time: 188s
+            pressure solve iterations:27.7k
+        Omega: 0.8
+            Simulation failed
+    Time Step: >0.0004
+        Failed

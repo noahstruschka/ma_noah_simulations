@@ -62,8 +62,8 @@ boundary_density_calculator = PressureZeroing()
 
 
 # IISPH parameters
-time_step = 0.0001
-omega = 0.5
+time_step = 0.0004
+omega = 0.8
 min_iterations = 2
 max_iterations = 30
 max_error = 0.1
@@ -85,6 +85,8 @@ trixi_include(joinpath(pwd(), folder, "Performance", simulation, method, "defaul
                             max_iterations=max_iterations,
                             max_error=max_error)
 
+
+# Dictionary vor boudnary density calculator in the file name
 boundary_dict = Dict(
     PressureZeroing => "PZ",
     PressureMirroring => "PM",
@@ -93,17 +95,24 @@ boundary_dict = Dict(
    # PressureBoundaries => "PB"
 )
 
-
-file_name = splitext(basename(@__FILE__))[1]
+# Define path to the forlder
 path = joinpath(pwd(), "Results", "Performance", simulation, method, file_name)
+
+# Define name of the plot
+file_name = splitext(basename(@__FILE__))[1]
+omega_string = replace(string(omega), "." => "")
+ts_string = replace(string(time_step), "." => "")
 density_calculator_boundary = boundary_dict[typeof(boundary_density_calculator)]
-plot_name1 = file_name * "_" * string(resolution) * "_" * density_calculator_boundary
-plot_name2 = plot_name1 * "_"
+plot_name1 = file_name * "_" * string(resolution) * "_" * density_calculator_boundary * "_w" * omega_string * "_ts" * ts_string
+# Full path of the new plot
 full_path1 = joinpath(path, plot_name1)
-full_path2 = joinpath(path, plot_name2)
+# plot and safe the plot
 plt1 = plot(sol)
 savefig(plt1, full_path1)
 
+#Second plot
+#plot_name2 = plot_name1 * "_"
+#full_path2 = joinpath(path, plot_name2)
 #ic = vtk2trixi("out/marrone_times_fluid_1_4948.vtu")
 #velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
 #plt2 = plot(ic, zcolor=velocity_magnitude', color=:coolwarm)

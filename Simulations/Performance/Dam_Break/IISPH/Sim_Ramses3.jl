@@ -62,8 +62,8 @@ boundary_density_calculator = PressureZeroing()
 
 
 # IISPH parameters
-time_step = 0.0001
-omega = 0.5
+time_step = 0.0004
+omega = 0.6
 min_iterations = 2
 max_iterations = 30
 max_error = 0.1
@@ -93,11 +93,12 @@ boundary_dict = Dict(
    # PressureBoundaries => "PB"
 )
 
-
+omega_string = string(omega)
+ts_string = string(time_step)
 file_name = splitext(basename(@__FILE__))[1]
 path = joinpath(pwd(), "Results", "Performance", simulation, method, file_name)
 density_calculator_boundary = boundary_dict[typeof(boundary_density_calculator)]
-plot_name1 = file_name * "_" * string(resolution) * "_" * density_calculator_boundary
+plot_name1 = file_name * "_" * string(resolution) * "_" * density_calculator_boundary * "_w" * omega_string * "_ts" * ts_string
 plot_name2 = plot_name1 * "_"
 full_path1 = joinpath(path, plot_name1)
 full_path2 = joinpath(path, plot_name2)
