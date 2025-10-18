@@ -44,6 +44,8 @@ boundary_density_calculator = AdamiPressureExtrapolation()
 
 # WCSPH parameters
 cfl = 1.5
+sl_factor = 1.6
+smoothing_length = sl_factor * fluid_particle_spacing
 # Use MolteniColagrossi as density diffusion
 density_diffusion = DensityDiffusionMolteniColagrossi(delta=0.1)
 
@@ -94,19 +96,12 @@ file_name = splitext(basename(@__FILE__))[1]
 path = joinpath(pwd(), "Results", "Performance", simulation, method, file_name)
 
 cfl_string = replace(string(cfl), "." => "")
+sl_factor_string = replace(string(smoothing_length_factor), "." => "")
 
 density_calculator_boundary = boundary_dict[typeof(boundary_density_calculator)]
-plot_name1 = file_name * "_" * method * "_" * string(resolution) * "_" * density_calculator_boundary * "_cfl" * cfl_string
+plot_name1 = file_name * "_" * method * "_" * string(resolution) * "_" * density_calculator_boundary * "_cfl" * cfl_string * "_sl" * sl_factor_string
 # Full path of the new plot
 full_path1 = joinpath(path, plot_name1)
 # plot and safe the plot
 plt1 = plot(sol)
 savefig(plt1, full_path1)
-
-#Second plot
-#plot_name2 = plot_name1 * "_"
-#full_path2 = joinpath(path, plot_name2)
-#ic = vtk2trixi("out/marrone_times_fluid_1_4948.vtu")
-#velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
-#plt2 = plot(ic, zcolor=velocity_magnitude', color=:coolwarm)
-#savefig(plt2, full_path2)

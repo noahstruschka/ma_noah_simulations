@@ -44,6 +44,8 @@ boundary_density_calculator = AdamiPressureExtrapolation()
 
 # WCSPH parameters
 cfl = 1.7
+sl_factor = 1.7
+smoothing_length = sl_factor * fluid_particle_spacing
 # Use MolteniColagrossi as density diffusion
 density_diffusion = DensityDiffusionMolteniColagrossi(delta=0.1)
 
@@ -94,9 +96,10 @@ file_name = splitext(basename(@__FILE__))[1]
 path = joinpath(pwd(), "Results", "Performance", simulation, method, file_name)
 
 cfl_string = replace(string(cfl), "." => "")
+sl_factor_string = replace(string(sl_factor), "." => "")
 
 density_calculator_boundary = boundary_dict[typeof(boundary_density_calculator)]
-plot_name1 = file_name * "_" * method * "_" * string(resolution) * "_" * density_calculator_boundary * "_cfl" * cfl_string
+plot_name1 = file_name * "_" * method * "_" * string(resolution) * "_" * density_calculator_boundary * "_cfl" * cfl_string * "_sl" * sl_factor_string
 # Full path of the new plot
 full_path1 = joinpath(path, plot_name1)
 # plot and safe the plot

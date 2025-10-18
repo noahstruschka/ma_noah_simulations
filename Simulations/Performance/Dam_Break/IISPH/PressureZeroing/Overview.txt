@@ -145,6 +145,35 @@ Nr.3 Simulation Time Step: 0.00025, Omega: 0.7
     5. Sim: 166s
     Average: 161,2s
 
+time_step = 0.00025, omega = 0.75
+    max_error = 0.1
+        total time: 146s
+        pressure solve iterations: 14.9k
+    max_error = 0.5
+        total time: 128s
+        pressure solve iterations: 11.3k
+    max_error = 1.0
+        total time: 120s / 120s
+        pressure solve iterations: 11.3k / 11.3k
+    max_error = 0.01
+        total time: 674s
+        pressure solve iterations: 122k
+
+time_step = 0.0002, omega = 0.6
+    max_error = 0.1
+        total time:
+        pressure solve iterations:
+    max_error = 0.3
+        total time: 131s
+        pressure solve iterations: 7.05k
+    max_error = 0.4
+        Failed
+    max_error = 0.5
+        Failed
+
+For a max error of bigger than 0.1 we get instabilitly, when we use the omega and time steps size like the best stable result from above
+therefore we use max error = 0.1.
+
 
 A higher time step does not need to lead to a better performance, since the number of iterations for the
 pressure solver also has a huge impact on the performance.
@@ -168,7 +197,7 @@ We decided to use a maximal density error of 0.1% for all of our simulations, to
 
 
 
-Weakly Compressible ImplicitIncompressibleSPHSystem
+WeaklyCompressibleSPHSystem
 
     AdamiPressureExtrapolation
 
@@ -227,7 +256,7 @@ Weakly Compressible ImplicitIncompressibleSPHSystem
         CFL: 1.4
             smoothing_length: 2.0
                 total time: 359s
-            smoothing_lenght:  1.8
+            smoothing_lenght: 1.8
                 total time:
 
         CFL: 1.5
@@ -239,32 +268,155 @@ Weakly Compressible ImplicitIncompressibleSPHSystem
         CFL: 1.6
             smoothing_length: 2.0
                 total time: 321s
-            smoothing_lenght: 1.8
-                total time:
+            smoothing_lenght: 1.6
+                total time: 298s
 
         CFL: 1.7
             smoothing_length: 2.0
                 total time: 306s
             smoothing_lenght: 1.8
                 total time: 260s
+            smoothing_lenght: 1.7
+                total time:
             smoothing_lenght: 1.6
                 total time: 293s
+
+
 
         CFL: 1.8
             smoothing_length: 2.0:
                 total time: 278s
             smoothing_lenght: 1.8
-                total time: 248s
+                total time: 248s / 246s / 256s!!!
+            smoothing_lenght: 1.7
+                total time: 317s
             smoothing_lenght: 1.6
                 total time: 290s
+            smoothing_lenght: 1.5
+                total time:
+            smoothing_lenght: 1.4
+                total time: 318s
+            smoothing_lenght: 1.2
+                total time: 305s
+            smoothing_length: 1.0
+                total time: 373s
 
         CFL: 1.9
             smoothing_length: 2.0:
                 total time:
             smoothing_lenght: 1.8
-                total time: 258s
+                total time: 258s / 255s
+            smoothing_lenght: 1.7
+                 total time:
             smoothing_lenght: 1.6
-                total time: 253s
+                total time: 253s !!!
+            smoothing_lenght 1.5
+                total time: 277s
+            smoothing_lenght: 1.4
+                total time: 269s
+            smoothing_lenght: 1.2
+                total time: 292s / 286s / 293s
+            smoothing_lenght: 1.0
+                total time: 317s / Failed
+
 
         CFL: 2.0
         Failed
+
+
+
+Smoothing length 1.5
+        CFL = 1.6
+            time step size: 9.2741e-05
+            total time: 307s
+        CFL = 1.7
+            time step size: 9.9837e-05
+            total time: 315s
+        CFL = 1.8
+            time step size: 1.0433e-04
+            total time: 320s
+        CFL = 1.9
+            time step size: 1.1013e-04
+            total time: 261s
+        CFL = 2.0
+            time step size: 1.1593e-04
+            total time: 256s
+        CFL = 2.1
+            time step size: 1.2172e-04
+            total time: 269s
+        CFL = 2.2
+            time step size: 1.2752e-04
+            total time: Failed
+
+
+    => stabilster CFL Wert: 2.1
+        time: 269
+        time step size: 1.2172e-04
+
+
+
+Smoothing length 1.75
+        CFL = 1.8
+            time step size: 1.2172e-04
+            total time: 251s
+        CFL = 1.9
+            time step size: 1.2849e-04
+            total time: 275s
+        CFL = 2.0
+            time step size: 1.3525e-04
+            total time: 280s
+        CFL = 2.1
+            time step size: 1.4021e-04
+            total time: 234s
+
+    => stabilster CFL Wert:
+        time:
+        time step size:
+
+
+
+Smoothing length 2.0
+        CFL = 1.8
+            time step size: 1.3911e-04
+            total time: 298s
+        CFL = 1.9
+            time step size: 1.4684e-04
+            total time: 277s
+        CFL = 2.0
+            time step size: 1.5457e-04
+            total time: Failed
+
+    => stabilster CFL Wert:
+        time:
+        time step size:
+
+Smoothing length 1.25
+        CFL = 1.8
+            time step size: 8.6945e-04
+            total time: 330s
+        CFL = 1.9
+            time step size: 9.1775e-05
+            total time: 292s
+        CFL = 2.0
+            time step size: 9.6606e-05
+            total time: 275s
+        CFL = 2.1
+            Failed
+
+Smoothing length 1.0
+        CFL = 1.7
+            time step size: 6.5692e-05
+            total time: 365s
+        CFL = 1.8
+            time step size: 6.9556e-05
+            total time: 338s
+        CFL = 1.9
+            time step size: 7.3420e-05
+            total time: 310s
+        CFL = 2.0
+            Failed
+
+
+    => stabilster CFL Wert :1.9
+        time: 310s
+        time step size: 7.3420e-05
