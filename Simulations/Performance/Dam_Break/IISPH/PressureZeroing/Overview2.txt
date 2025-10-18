@@ -35,7 +35,7 @@ time_step: 0.0003, omega = 0.6
 
 time_step: 0.00025, omega = 0.6
     max_error = 0.4
-        total time: 104s (Good Result)
+        total time: 104s (Good Result) !!!!!!!!!!!!!!!
         pressure solve iterations: 7.88k
 
 time_step: 0.0003, omega = 0.6
@@ -43,6 +43,11 @@ time_step: 0.0003, omega = 0.6
         total time: 96,7s (No nice wave)
         pressure solve iterations: 8.37s
 
+
+time_step = 0.0003, omega = 0.6
+    max_error = 0.3
+        total time: 109s
+        pressure solve iterations:
 
 WeaklyCompressibleSPHSystem
 
