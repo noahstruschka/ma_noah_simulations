@@ -26,6 +26,12 @@ time_step: 0.0003, omega = 0.5
         total time: 115s
         pressure solve iterations: 8.32k
 
+time_step: 0.0003, omega = 0.6
+    max_error = 0.5
+        total time: 101s
+        pressure solve iterations: 7.12k
+
+
 
 WeaklyCompressibleSPHSystem
 
