@@ -186,7 +186,7 @@ time_step: 0.0003, omega = 0.5
         total time: 96,6s
         pressure solve iterations: 8.32k
 
-time_step: 0.0003, omega = 0.5
+time_step: 0.0003, omega = 0.5 (No nice wave)
     max_error = 0.4
         total time: 115s
         pressure solve iterations: 8.32k
