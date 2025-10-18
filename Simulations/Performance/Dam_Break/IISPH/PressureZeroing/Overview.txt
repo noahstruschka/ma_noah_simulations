@@ -175,46 +175,96 @@ Weakly Compressible ImplicitIncompressibleSPHSystem
         CFL: 0.9
             smoothing_length: 2.0
                 total time: 494s
+            smoothing_lenght: 1.8
+                total time:
 
         CFL: 0.95
             smoothing_length: 2.0
                 total time: 470s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.0
             smoothing_lenght: 2.0
                 total time: 493s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.05
             smoothing_lenght: 2.0
                 total time: 393s
+
         CFL: 1.1
             smoothing_lenght: 2.0
                 total time: 380s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.15
             smoothing_lenght: 2.0
                 total time: 380s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.2
             smoothing_lenght: 2.0
                 total time: 427s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.25
             smoothing_lenght: 2.0
                 total time: 394s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.3
             smoothing_lenght: 2.0
                 total time: 374s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.4
-            smoothing_length: 2.0:
+            smoothing_length: 2.0
                 total time: 359s
+            smoothing_lenght:  1.8
+                total time:
+
         CFL: 1.5
-            smoothing_length: 2.0:
+            smoothing_length: 2.0
                 total time: 329s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.6
-            smoothing_length: 2.0:
+            smoothing_length: 2.0
                 total time: 321s
+            smoothing_lenght: 1.8
+                total time:
+
         CFL: 1.7
-            smoothing_length: 2.0:
+            smoothing_length: 2.0
                 total time: 306s
+            smoothing_lenght: 1.8
+                total time: 260s
+            smoothing_lenght: 1.6
+                total time: 293s
+
         CFL: 1.8
             smoothing_length: 2.0:
                 total time: 278s
+            smoothing_lenght: 1.8
+                total time: 248s
+            smoothing_lenght: 1.6
+                total time: 290s
+
         CFL: 1.9
             smoothing_length: 2.0:
                 total time:
+            smoothing_lenght: 1.8
+                total time: 258s
+            smoothing_lenght: 1.6
+                total time: 253s
+
+        CFL: 2.0
+        Failed
