@@ -62,7 +62,7 @@ boundary_density_calculator = PressureZeroing()
 
 
 # IISPH parameters
-time_step = 0.00025
+time_step = 0.0003
 omega = 0.6
 min_iterations = 1
 max_iterations = 10
