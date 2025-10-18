@@ -171,6 +171,26 @@ time_step = 0.0002, omega = 0.6
     max_error = 0.5
         Failed
 
+time_step: 0.0002, omega = 0.4
+    max_error = 0.9
+        total time: 129s
+        pressure solve iterations: 7,05k (only 1 iteration)
+
+time_step: 0.0003, omega = 0.4
+    max_error = 0.5
+        total time: 129s
+        pressure solve iterations: 14,5k
+
+time_step: 0.0003, omega = 0.5
+    max_error = 0.6
+        total time: 96,6s
+        pressure solve iterations: 8.32k
+
+time_step: 0.0003, omega = 0.5
+    max_error = 0.4
+        total time: 115s
+        pressure solve iterations: 8.32k
+
 For a max error of bigger than 0.1 we get instabilitly, when we use the omega and time steps size like the best stable result from above
 therefore we use max error = 0.1.
 

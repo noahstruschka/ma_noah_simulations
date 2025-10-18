@@ -1,0 +1,63 @@
+Best Simulation for the performance
+
+ImplicitIncompressibleSPHSystem
+
+Für max_error = 0.1
+    time step size: 0.00025
+    omega: 0.75
+        total time: 144s
+
+Für andere max_error:
+
+time_step: 0.0003, omega = 0.5
+    max_error = 0.6
+        total time: 96,6s
+        pressure solve iterations: 8.32k
+
+
+time_step: 0.0002, omega = 0.4
+    max_error = 0.9
+        total time: 129s
+        pressure solve iterations: 7,05k (only 1 iteration)
+
+
+time_step: 0.0003, omega = 0.5
+    max_error = 0.4
+        total time: 115s
+        pressure solve iterations: 8.32k
+
+
+WeaklyCompressibleSPHSystem
+
+Smoothing length 1.0
+    => stabilster CFL Wert = 1.9
+            time step size: 7.3420e-05
+            total time: 310s
+
+Smoothing length 1.25
+    => stabilster CFL Wert = 2.0
+            time step size: 9.6606e-05
+            total time: 275s
+
+Smoothing length 1.5
+    => stabilster CFL Wert: 2.1
+        time: 269
+        time step size: 1.2172e-04
+
+Smoothing length 1.75
+    => stabilster CFL Wert: 2.1
+        time step size: 1.4021e-04
+        total time: 234s
+
+
+Smoothing length 2.0
+    => stabilster CFL Wert  = 1.9
+            time step size: 1.4684e-04
+            total time: 277s
+
+
+Schnellste Simulation
+Smoothing length: 1.75
+CFL: 2.1
+    total time:  234s
+    time step size: 1.4021e-04
