@@ -2,7 +2,7 @@ using Plots
 using TrixiParticles
 
 
-function plot_dam_break2d(ic, xlim, ylim, zcolor, color_palette, markersize, filename, savefig=false)
+function plot_dam_break2d(ic, xlim, ylim, zcolor, color_palette, markersize, file_directory, save_fig)
 
     plt = plot(ic,
              xlim=xlim,
@@ -12,23 +12,25 @@ function plot_dam_break2d(ic, xlim, ylim, zcolor, color_palette, markersize, fil
              makersize=markersize
     )
 
-    if savefig
-        savefig(plt, joinpath("Results", filename))
+    if save_fig
+        savefig(plt, file_directory)
+        println("Saved file succesuflly in ", file_directory)
     end
 
     return plt
 end
 
 
-function plot_dam_break_marrone(file_directory, filename, save=false)
+function plot_dam_break_marrone(file_directory, filename; save_fig=false)
     ic = vtk2trixi(file_directory)
     xlim = (2.5, Inf)
     ylim = (0,1)
     velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
     color_palette = palette(:rainbow, 12)
     markersize = 0.7
-    file_name = "Marrone/" * filename
-    plt = plot_dam_break2d(ic, xlim, ylim, velocity_magnitude, color_palette, markersize, filename)
+    file_directory= "Results/Marrone/" * filename
+
+    plt = plot_dam_break2d(ic, xlim, ylim, velocity_magnitude, color_palette, markersize, file_directory, save_fig)
 
     return plt
 end

@@ -9,12 +9,12 @@
 
 using Plots
 
-save_all_files = true
+save_files = true
 
 include("../../PlottingFiles/PlotDamBreak.jl")
 
 plot_dam_break_marrone("Output/Marrone/PressureZeroing/IISPH_PressureZeroing_Marrone_fluid_1_7978.vtu",
-                        "IISPH_Marrone_PressureZeroing", save_all_files)
+                        "IISPH_Marrone_PressureZeroing"; save_fig=save_files)
 
 plot_dam_break_marrone("Output/Marrone/PressureMirroring/IISPH_PressureMirroring_Marrone_fluid_1_7978.vtu",
-                        "IISPH_Marrone_PressureMirroring", save_all_files)
+                        "IISPH_Marrone_PressureMirroring", save_fig=save_files)
