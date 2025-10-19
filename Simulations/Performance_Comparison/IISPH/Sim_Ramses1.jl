@@ -11,7 +11,7 @@ simulation = "Dam_Break"
 method = "IISPH"
 
 # Load the iisph example
-trixi_include(joinpath(pwd(), folder, "Performance", simulation, method, "default.jl"), sol=nothing, ode=nothing)
+trixi_include("IISPH/default.jl", sol=nothing, ode=nothing)
 
 # =========================================================================================
 # Change Resolution
@@ -62,16 +62,16 @@ boundary_density_calculator = PressureZeroing()
 
 
 # IISPH parameters
-time_step = 0.0002
-omega = 0.5
+time_step = 0.00025
+omega = 0.6
 min_iterations = 1
 max_iterations = 10
-max_error = 0.5
+max_error = 0.4
 
 
 
 # Run simulation with updated parameters
-trixi_include(joinpath(pwd(), folder, "Performance", simulation, method, "default.jl"),
+trixi_include("IISPH/default.jl",
                             resolution=resolution,
                             neighborhood_search=neighborhood_search,
                             callbacks=callbacks,

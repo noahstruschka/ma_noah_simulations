@@ -2,10 +2,9 @@
 
 
 # Section 1: Comparison with Marrone paper
-include("Marrone/CreatePlots.jl")
-
+include("Marrone/CreatePlotsMarrone.jl")
 
 
 
 # Section 2: Performance Comparison
-include("Performance/CreatePlots.jl")
+include("Performance/CreatePlotsPerformance.jl")
