@@ -27,8 +27,8 @@ alpha = 0.02
 
 
 # WCSPH parameters
-cfl = 2.1
-smoothing_length_factor = 1.75
+cfl = 1.9
+smoothing_length_factor = 2.0
 
 
 # Smoothing length and kernel

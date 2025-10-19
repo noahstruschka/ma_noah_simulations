@@ -1,0 +1,40 @@
+1. WCSPH, Smoothing length: 1.75, CFL: 2.1 -> failed
+
+2. WCSPH, Smoothing length: 1.5, CFL: 2.1 -> failed (at 86%)
+
+3. WCSPH, Smoothing lenght: 1.5, CFL: 2.0 -> failed (at 94%)
+
+4. WCSPH, Smoothing lenght: 1.5, CFL: 1.9 -> failed (at 97%)
+
+5. WCSPH, Smoothing lenght: 1.5, CFL: 1.8 -> 373 Sekunden
+
+6. WCSPH, Smoothing lenght: 1.75, CFL: 2.0 -> failed (at 97%)
+
+7. WCSPH, Smoothing lenght: 1.75, CFL: 1.9 ->  325 Sekunden
+
+8. WCSPH, Smoothing lenght: 2.0, CFL: 2.0 -> failed (at 67%)
+
+9. WCSPH, Smoothing lenght: 2.0, CFL: 1.9 ->
+
+
+
+
+
+
+1. IISPH, time step: 0.0002, omega: 0.6, max error: 0.4
+
+2. IISPH, time step: 0.0002, omega: 0.5, max error: 0.4
+
+3. IISPH, time step: 0.0002, omega: 0.4, max error: 0.4
+
+4. IISPH, time step: 0.00025, omega: 0.6, max error: 0.4
+
+5. IISPH, time step: 0.00025, omega: 0.5, max error: 0.4
+
+6. IISPH, time step: 0.00025, omega: 0.4, max error: 0.4
+
+7. IISPH, time step: 0.0003, omega: 0.6, max error: 0.4
+
+8. IISPH, time step: 0.0003, omega: 0.5, max error: 0.4
+
+9. IISPH, time step: 0.0003, omega: 0.4, max error: 0.4
