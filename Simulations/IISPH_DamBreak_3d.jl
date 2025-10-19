@@ -11,7 +11,7 @@ fluid_particle_spacing = H / resolution
 
 # Load setup from dam break example
 trixi_include(@__MODULE__,
-              joinpath(examples_dir(), "fluid", "dam_break_2d.jl"),
+              joinpath(examples_dir(), "fluid", "dam_break_3d.jl"),
               fluid_particle_spacing=fluid_particle_spacing,
               sol=nothing, ode=nothing)
 
@@ -23,7 +23,7 @@ smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 # to obtain a density slightly below the reference density.
 # Otherwise, the fluid will jump slightly at the beginning of the simulation.
 tank.fluid.mass .*= 0.995
-print(maximum(tank.fluid.mass))
+
 # Calculate kinematic viscosity for the viscosity model.
 # Only ViscosityAdami and ViscosityMorris can be used for IISPH simulations since they don't
 # require a speed of sound.
@@ -32,11 +32,11 @@ nu = alpha * smoothing_length * sound_speed / 8
 viscosity = ViscosityAdami(; nu)
 
 # IISPH parameters
-time_step = 0.00025
-omega = 0.7
+time_step = 0.0002
+omega = 0.6
 min_iterations = 1
 max_iterations = 100
-max_error = 0.2
+max_error = 0.4
 
 # Use IISPH as fluid system
 fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,
@@ -70,15 +70,15 @@ saving_callback = SolutionSavingCallback(dt=100, prefix=solution_prefix)
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.
 
 saving_paper = SolutionSavingCallback(save_times=[0.0, 1.5, 2.36, 3.0, 5.7, 6.45] ./
-                                                 sqrt(gravity / H), output_directory="Output/Performance/IISPH",
-                                      prefix="IISPH_Best_Performance")
+                                                 sqrt(gravity / H), output_directory="Output/Dam_Break_3d",
+                                      prefix="IISPH_Dam_Break_3d")
 
 # Overwrite the callbacks
 callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
 
 # Run the dam break simulation with these changes
 trixi_include(@__MODULE__,
-              joinpath(examples_dir(), "fluid", "dam_break_2d.jl"),
+              joinpath(examples_dir(), "fluid", "dam_break_3d.jl"),
               fluid_particle_spacing=fluid_particle_spacing,
               smoothing_kernel=smoothing_kernel,
               smoothing_length=smoothing_length,

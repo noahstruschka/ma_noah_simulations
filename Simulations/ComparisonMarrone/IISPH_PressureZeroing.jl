@@ -1,7 +1,6 @@
 # Add neccessary packages
 using TrixiParticles
 using OrdinaryDiffEq
-using Plots
 using ThreadPinning
 pinthreads(:numa)
 

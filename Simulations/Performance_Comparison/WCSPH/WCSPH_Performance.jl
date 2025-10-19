@@ -28,7 +28,7 @@ alpha = 0.02
 
 # WCSPH parameters
 cfl = 1.9
-smoothing_length_factor = 2.0
+smoothing_length_factor = 1.25
 
 
 # Smoothing length and kernel
@@ -58,7 +58,7 @@ saving_paper = SolutionSavingCallback(save_times=[0.0, 1.5, 2.36, 3.0, 5.7, 6.45
 
 stepsize_callback = StepsizeCallback(cfl=cfl)
 
-callbacks = callbacks = CallbackSet(info_callback, saving_callback, stepsize_callback, saving_paper)
+callbacks = CallbackSet(info_callback, saving_callback, stepsize_callback, saving_paper)
 
 # Run the dam break simulation with these changes
 trixi_include(@__MODULE__,

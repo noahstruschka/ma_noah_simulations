@@ -43,10 +43,10 @@ function plot_dam_break_close(file_directory, file_name, save_fig=false)
         x_lim = (2.4, 3.2196)
         y_lim = (0, 0.72)
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
-        color_palette = palette(:cooltowarm, 12)
-        markersize = 0.1
+        color_palette = palette(:roma10)
+        marker_size = 5
         file_directory= "Results/" * file_name
-        plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, marker_size, file_directory, sav_fig)
+        plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, marker_size, file_directory, save_fig)
 
         return plt
 end
