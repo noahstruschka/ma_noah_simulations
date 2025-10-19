@@ -22,8 +22,9 @@ smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 # This kernel slightly overestimates the density, so we reduce the mass slightly
 # to obtain a density slightly below the reference density.
 # Otherwise, the fluid will jump slightly at the beginning of the simulation.
+println(maximum(tank.fluid.density))
 tank.fluid.mass .*= 0.995
-print(maximum(tank.fluid.mass))
+println(maximum(tank.fluid.density))
 # Calculate kinematic viscosity for the viscosity model.
 # Only ViscosityAdami and ViscosityMorris can be used for IISPH simulations since they don't
 # require a speed of sound.
@@ -33,10 +34,10 @@ viscosity = ViscosityAdami(; nu)
 
 # IISPH parameters
 time_step = 0.00025
-omega = 0.7
+omega = 0.6
 min_iterations = 1
 max_iterations = 100
-max_error = 0.2
+max_error = 0.3
 
 # Use IISPH as fluid system
 fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,

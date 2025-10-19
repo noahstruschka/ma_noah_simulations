@@ -22,7 +22,7 @@
 
 
 
-
+-------------------------------------------------------------------------------------------
 
 
 1. IISPH, time step: 0.0002, omega: 0.5, max error: 0.1 -> 318 Sekunden
@@ -41,9 +41,10 @@
 
 8. IISPH, time step: 0.0002, omega: 0.6, max error: 0.2 -> 191 Sekunden
 
-8. IISPH, time step: 0.0002, omega: 0.7, max error: 0.2 -> 168 Sekunden
+8. IISPH, time step: 0.0002, omega: 0.7, max error: 0.2 -> 168 Sekunden !
 
 8. IISPH, time step: 0.0002, omega: 0.8, max error: 0.2 -> failed
+
 
 8. IISPH, time step: 0.00025, omega: 0.4, max error: 0.2 -> failed
 
@@ -51,10 +52,40 @@
 
 10. IISPH, time step: 0.00025, omega: 0.6, max error: 0.2 -> 184 Sekunden
 
-10. IISPH, time step: 0.00025, omega: 0.7, max error: 0.2 -> 147 Sekunden
+10. IISPH, time step: 0.00025, omega: 0.7, max error: 0.2 -> 147 Sekunden !!
 
-11. IISPH, time step: 0.0003, omega: 0.6, max error: 0.2
+10. IISPH, time step: 0.00025, omega: 0.8, max error: 0.2 -> failed
 
-12. IISPH, time step: 0.0003, omega: 0.5, max error: 0.4
+10. IISPH, time step: 0.00025, omega: 0.6, max error: 0.3 -> 160 Sekunden / 153 Sekunden / 145 Sekunden / 158 Sekunden
 
-13. IISPH, time step: 0.0003, omega: 0.4, max error: 0.4
+10. IISPH, time step: 0.00025, omega: 0.7, max error: 0.3 -> 160 Sekunden
+
+11. IISPH, time step: 0.00025, omega: 0.7, max error: 0.3 -> 137 Sekunden !!!
+
+11. IISPH, time step: 0.00025, omega: 0.8, max error: 0.3 -> failed
+
+11. IISPH, time step: 0.00025, omega: 0.6, max error: 0.4 -> failed
+
+11. IISPH, time step: 0.00025, omega: 0.5, max error: 0.4 -> failed
+
+
+12. IISPH, time step: 0.0003, omega: 0.4, max error: 0.2 -> failed
+
+13. IISPH, time step: 0.0003, omega: 0.4, max error: 0.1 -> 516 Sekunden
+
+13. IISPH, time step: 0.0003, omega: 0.7, max error: 0.1 -> 219 Sekunden
+
+13. IISPH, time step: 0.0003, omega: 0.6, max error: 0.2 -> 173 Sekunden
+
+13. IISPH, time step: 0.0003, omega: 0.7, max error: 0.2 -> failed
+
+13. IISPH, time step: 0.0003, omega: 0.6, max error: 0.3 -> failed
+
+13. IISPH, time step: 0.0003, omega: 0.5, max error: 0.3 -> failed
+
+13. IISPH, time step: 0.0004, omega: 0.5, max error: 0.1 -> failed
+
+13. IISPH, time step: 0.0004, omega: 0.4, max error: 0.1 -> failed
+
+
+13. IISPH, time step: 0.0001, omega: 0.6, max error: 0.4 -> failed
