@@ -26,7 +26,8 @@ function plot_dam_break_marrone(file_directory, filename, save=false)
     ylim = (0,1)
     velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
     color_palette = palette(:rainbow, 12)
-    marker_size = 0.7
+    markersize = 0.7
+    file_name = "Marrone/" * filename
     plt = plot_dam_break2d(ic, xlim, ylim, velocity_magnitude, color_palette, markersize, filename)
 
     return plt
