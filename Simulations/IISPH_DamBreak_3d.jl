@@ -5,7 +5,7 @@ using ThreadPinning
 pinthreads(:numa)
 
 H = 0.6
-resolution = 320
+resolution = 160
 
 fluid_particle_spacing = H / resolution
 
@@ -42,7 +42,7 @@ max_error = 0.4
 fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,
                                                smoothing_length, fluid_density,
                                                viscosity=viscosity,
-                                               acceleration=(0.0, -gravity),
+                                               acceleration=(0.0, -gravity, 0.0),
                                                min_iterations=min_iterations,
                                                max_iterations=max_iterations,
                                                max_error=max_error,
@@ -82,7 +82,7 @@ trixi_include(@__MODULE__,
               fluid_particle_spacing=fluid_particle_spacing,
               smoothing_kernel=smoothing_kernel,
               smoothing_length=smoothing_length,
-              viscosity_fluid=viscosity,
+              viscosity=viscosity,
               fluid_system=fluid_system,
               state_equation=nothing,
               boundary_density_calculator=boundary_density_calculator,
