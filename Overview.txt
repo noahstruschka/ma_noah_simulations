@@ -1,0 +1,8 @@
+Main.jl Simulations
+
+Only the 3 Marrone simulations are carried out
+
+1. Durchlauf
+IISPH-PZ: 320 Sek
+IISPH-PM: 312 Sek
+WCSPH-Adami: 340 Sek
