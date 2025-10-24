@@ -21,3 +21,8 @@ WCSPH-Adami: 331 Sek
 IISPH-PZ: 318 Sek
 IISPH-PM: 314 Sek
 WCSPH-Adami: 331 Sek
+
+5. Durchlauf (selbe Parameter)
+IISPH-PZ: 307 Sek
+IISPH-PM: 313 Sek
+WCSPH-Adami: 333 Sek
