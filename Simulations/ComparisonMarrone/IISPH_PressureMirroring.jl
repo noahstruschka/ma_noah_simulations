@@ -70,7 +70,7 @@ saving_callback = SolutionSavingCallback(dt=100, prefix=solution_prefix)
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.
 
 saving_paper = SolutionSavingCallback(save_times=[0.0, 1.5, 2.36, 3.0, 5.7, 6.45] ./
-                                                 sqrt(gravity / H), output_directory="Output/Marrone/PressureMirroring",
+                                                 sqrt(gravity / H), output_directory="Output/Marrone/IISPH/PressureMirroring",
                                       prefix="IISPH_PressureMirroring_Marrone")
 
 # Overwrite the callbacks
