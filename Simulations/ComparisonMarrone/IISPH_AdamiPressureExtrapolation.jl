@@ -36,7 +36,7 @@ viscosity = ViscosityAdami(; nu)
 time_step = 0.0002
 omega = 0.5
 min_iterations = 2
-max_iterations = 20
+max_iterations = 100
 max_error = 0.1
 
 # Use IISPH as fluid system
