@@ -6,3 +6,13 @@ Only the 3 Marrone simulations are carried out
 IISPH-PZ: 320 Sek
 IISPH-PM: 312 Sek
 WCSPH-Adami: 340 Sek
+
+2. Durchlauf (selbe Parameter)
+IISPH-PZ: 315 Sek
+IISPH-PM: 318 Sek
+WCSPH-Adami: 341 Sek
+
+3. Durchlauf (selbe Parameter)
+IISPH-PZ: Sek
+IISPH-PM: Sek
+WCSPH-Adami: Sek
