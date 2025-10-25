@@ -26,3 +26,23 @@ WCSPH-Adami: 331 Sek
 IISPH-PZ: 307 Sek
 IISPH-PM: 313 Sek
 WCSPH-Adami: 333 Sek
+
+6. Durchlauf (selbe Parameter, ohne Parallel update)
+IISPH-PZ: ~340 Sek
+IISPH-PM: ~340 Sek
+WCSPH-Adami: ~2400 Sek
+
+7. Durchlauf (selbe Parameter, mit Serial update)
+IISPH-PZ: 851 Sek
+IISPH-PM: 828 Sek
+WCSPH-Adami: 2724 Sek
+
+8. Durchlauf (selbe Parameter, mit Serial update)
+IISPH-PZ:  Sek
+IISPH-PM:  Sek
+WCSPH-Adami:  Sek
+
+9. Durchlauf (selbe Parameter, mit Serial update)
+IISPH-PZ:  Sek
+IISPH-PM:  Sek
+WCSPH-Adami:  Sek

@@ -44,7 +44,7 @@ smoothing_kernel = WendlandC2Kernel{2}()
 min_corner = minimum(tank.boundary.coordinates, dims=2)
 max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
-neighborhood_search = GridNeighborhoodSearch{2}(; cell_list, update_strategy=ParallelUpdate())
+neighborhood_search = GridNeighborhoodSearch{2}(; update_strategy=SerialUpdate())#cell_list)#, update_strategy=ParallelUpdate())
 
 # ==========================================================================================
 # Overwrite the saving_callback such that we only get the first and the last time step as
