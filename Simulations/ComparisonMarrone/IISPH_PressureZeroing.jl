@@ -33,7 +33,7 @@ viscosity = ViscosityAdami(; nu)
 
 # IISPH parameters
 time_step = 0.0002
-omega = 0.4
+omega = 0.5
 min_iterations = 2
 max_iterations = 100
 max_error = 0.1
@@ -63,7 +63,7 @@ neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=Para
 # ==========================================================================================
 # Overwrite the saving_callback such that we only get the first and the last time step as
 # result
-saving_callback = SolutionSavingCallback(dt=0.1, prefix=solution_prefix)
+saving_callback = SolutionSavingCallback(dt=0.100, prefix=solution_prefix)
 # Save at certain timepoints which allows comparison to the results of Marrone et al.,
 # i.e. t(g/H)^(1/2) = (1.5, 2.36, 3.0, 5.7, 6.45).
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.
