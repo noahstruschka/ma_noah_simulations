@@ -17,12 +17,12 @@ trixi_include(@__MODULE__,
 
 # IISPH doesn't require a large compact support like WCSPH and performs worse with a typical
 # smoothing length used for WCSPH.
-smoothing_length = 1.0 * fluid_particle_spacing
+smoothing_length =  1.25 * fluid_particle_spacing
 smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 # This kernel slightly overestimates the density, so we reduce the mass slightly
 # to obtain a density slightly below the reference density.
 # Otherwise, the fluid will jump slightly at the beginning of the simulation.
-tank.fluid.mass .*= 0.97
+tank.fluid.mass .*= 0.98
 
 # Calculate kinematic viscosity for the viscosity model.
 # Only ViscosityAdami and ViscosityMorris can be used for IISPH simulations since they don't
@@ -57,7 +57,7 @@ boundary_density_calculator=PressureZeroing()
 min_corner = minimum(tank.boundary.coordinates, dims=2)
 max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
-neighborhood_search = GridNeighborhoodSearch{2}(; cell_list, update_strategy=ParallelUpdate())
+neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=ParallelUpdate())
 
 
 # ==========================================================================================

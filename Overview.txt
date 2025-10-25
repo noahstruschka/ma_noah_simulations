@@ -46,3 +46,42 @@ WCSPH-Adami:  Sek
 IISPH-PZ:  Sek
 IISPH-PM:  Sek
 WCSPH-Adami:  Sek
+
+
+
+
+------------------
+
+Out 1
+
+Out 7: 1.0 smoothing length
+439 Sekunden
+
+Out 8: 1.25 smoothing length
+307 Sekunden
+
+Out 9: 1.5 smoothing length
+289 Sekunden
+
+Out 10: 1.75 smoothing length
+ Sekunden
+
+
+Schoenberg Cubic Spline kernel:
+IISPH mit smoothing length 1.0 * fluid particle spacing:
+Fluid expoldiert am Anfang (fast) gar nicht. Kein Damping factor erforderlich
+Zeit der Simulation: 436 Sekunden
+
+IISPH mit smoothing length 1.25 * fluid particle spacing:
+Fluid explodiert relativ leicht nur. Nicht so großer damping factor erforderlich
+Zeit der Simulation: 307 Sekunden
+
+IISPH mit smoothing length 1.5 * fluid particle spacing:
+Fluid explodiert schonn stärker. großer damping factor erforderlich
+Zeit der Simulation: 283 Sekunden
+
+IISPH mit smoothing length 1.75 * fluid particle spacing:
+Instabil
+
+WendlandKernel:
+Alle smoothing length waren instabil
