@@ -38,8 +38,8 @@ IISPH-PM: 828 Sek
 WCSPH-Adami: 2724 Sek
 
 8. Durchlauf (selbe Parameter, mit Serial update)
-IISPH-PZ:  Sek
-IISPH-PM:  Sek
+IISPH-PZ: 854 Sek
+IISPH-PM: 819 Sek
 WCSPH-Adami:  Sek
 
 9. Durchlauf (selbe Parameter, mit Serial update)
