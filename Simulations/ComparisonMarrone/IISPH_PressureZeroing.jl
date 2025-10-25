@@ -36,7 +36,7 @@ time_step = 0.0002
 omega = 0.5
 min_iterations = 2
 max_iterations = 100
-max_error = 0.1
+max_error = 0.05
 
 # Use IISPH as fluid system
 fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,
