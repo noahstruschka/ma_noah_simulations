@@ -66,7 +66,7 @@ function plot_dam_break_pressure(file_directory, file_name; save_fig=false)
     color_palette = palette_marrone #cgrad(:jet1, 11, categorical=true) # jet oder jet1 sind bisher am nähesten dran
     c_lims = (0,1.1)
     marker_size = 5
-    file_directory= "Results/Marrone/Pressure" * file_name
+    file_directory= "Results/Marrone/Pressure/" * file_name
 
     plt = plot_dam_break_2d(ic, x_lim, y_lim, pressure, color_palette, c_lims, marker_size, file_directory, save_fig)
 
