@@ -78,7 +78,7 @@ function plot_dam_break_close(file_directory, file_name; save_fig=false)
         x_lim = (2.4, 3.2196)
         y_lim = (0, 0.72)
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
-        color_palette = palette(:vik10)
+        color_palette = cgrad(:vik, 11, categorical=true)
         c_lims = (0,1.1)
         marker_size = 5
         file_directory = "Results/DensityCalculators/" * file_name
