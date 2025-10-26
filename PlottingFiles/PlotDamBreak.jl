@@ -81,7 +81,7 @@ function plot_dam_break_close(file_directory, file_name; save_fig=false)
         color_palette = palette(:vik10)
         c_lims = (0,1.1)
         marker_size = 5
-        file_directory = "Results/DensityCalculators" * file_name
+        file_directory = "Results/DensityCalculators/" * file_name
         plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
 
         return plt
