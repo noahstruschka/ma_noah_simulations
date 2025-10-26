@@ -21,8 +21,9 @@ smoothing_length =  1.25 * fluid_particle_spacing
 smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 # This kernel slightly overestimates the density, so we reduce the mass slightly
 # to obtain a density slightly below the reference density.
-# Otherwise, the fluid will jump slightly at the beginning of the simulation.
-tank.fluid.mass .*= 0.98
+# Otherwise, we will get a "pressure explosion", and the fluid will jump slightly at the
+# beginning of the simulation.
+tank.fluid.mass .*= 0.99
 
 # Calculate kinematic viscosity for the viscosity model.
 # Only ViscosityAdami and ViscosityMorris can be used for IISPH simulations since they don't
@@ -57,13 +58,13 @@ boundary_density_calculator=PressureZeroing()
 min_corner = minimum(tank.boundary.coordinates, dims=2)
 max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
-neighborhood_search = GridNeighborhoodSearch{2}()#; cell_list,update_strategy=ParallelUpdate())
-
+neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=ParallelUpdate())
+#neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=SerialUpdate())
 
 # ==========================================================================================
 # Overwrite the saving_callback such that we only get the first and the last time step as
 # result
-saving_callback = SolutionSavingCallback(dt=0.100, prefix=solution_prefix)
+saving_callback = SolutionSavingCallback(dt=0.0500, prefix=solution_prefix)
 # Save at certain timepoints which allows comparison to the results of Marrone et al.,
 # i.e. t(g/H)^(1/2) = (1.5, 2.36, 3.0, 5.7, 6.45).
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.

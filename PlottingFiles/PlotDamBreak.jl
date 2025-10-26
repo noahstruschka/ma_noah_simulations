@@ -62,9 +62,9 @@ function plot_dam_break_close(file_directory, file_name, save_fig=false)
         ic = vtk2trixi(file_directory)
         x_lim = (2.4, 3.2196)
         y_lim = (0, 0.72)
-        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
-        color_palette = palette(:roma10)
-        c_lims = (0,1)
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
+        color_palette = palette(:roma11)
+        c_lims = (0,1.1)
         marker_size = 5
         file_directory= "Results/" * file_name
         plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
@@ -74,11 +74,11 @@ end
 
 function plot_dam_break_complete(file_directory, file_name, save_fig=false)
         ic = vtk2trixi(file_directory)
-        xlim = (0, Inf)
+        xlim = (0, 4)
         ylim = (0, Inf)
-        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
-        color_palette = palette(:cooltowarm, 12)
-        c_lims = (0,1)
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
+        color_palette = palette(:cooltowarm, 11)
+        c_lims = (0,1.1)
         markersize = 0.1
         file_directory= "Results/" * file_name
         plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, sav_fig)
