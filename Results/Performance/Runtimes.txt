@@ -15,14 +15,14 @@ PressureMirroring:
 
 AdamiPressureExtrapolation:
 1. 187s
-2.
-3.
+2. 174s
+3. 178s
 
 
 PressureBoundaries:
-1.
-2.
-3.
+1. 187s
+2. 185s
+3. 179s
 
 
 
