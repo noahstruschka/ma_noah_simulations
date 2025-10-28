@@ -44,11 +44,17 @@ plot_dam_break_pressure("Output/Marrone/IISPH/PressureZeroing/IISPH_PressureZero
 plot_dam_break_pressure("Output/Marrone/IISPH/PressureMirroring/IISPH_PressureMirroring_Marrone_fluid_1_7050.vtu",
                        "IISPH_Pressure_PressureMirroring", save_fig=save_files)
 
-plot_dam_break_marrone("Output/Marrone/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_Marrone_fluid_1_7050.vtu",
+plot_dam_break_pressure("Output/Marrone/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_Marrone_fluid_1_7050.vtu",
                         "IISPH_Pressure_AdamiPressureExtrapolation", save_fig=save_files)
 
-plot_dam_break_marrone("Output/Marrone/IISPH/PressureBoundaries/IISPH_PressureBoundaries_Marrone_fluid_1_7050.vtu",
+plot_dam_break_pressure("Output/Marrone/IISPH/PressureBoundaries/IISPH_PressureBoundaries_Marrone_fluid_1_7050.vtu",
                         "IISPH_Pressure_PressureBoundaries", save_fig=save_files)
 
 plot_dam_break_pressure("Output/Marrone/WCSPH/AdamiPressureExtrapolation/WCSPH_AdamiPressureExtrapolation_Marrone_fluid_1_10135.vtu",
                         "WCSPH_Pressure_AdamiPressureExtrapolation", save_fig=save_files)
+
+
+
+
+plot_dam_break_marrone("Output/Marrone/IISPH/PressureBoundaries_copy/IISPH_PressureBoundaries_Marrone_fluid_1_7050.vtu",
+                        "IISPH_Marrone_PressureBoundaries_copy", save_fig=save_files)
