@@ -1,0 +1,34 @@
+IISPH
+
+
+PressureZeroing:
+1.
+2.
+3.
+
+
+PressureMirroring:
+1. 176s
+2. 172s
+3. 175s
+
+
+AdamiPressureExtrapolation:
+1. 187s
+2.
+3.
+
+
+PressureBoundaries:
+1.
+2.
+3.
+
+
+
+WCSPH
+
+AdamiPressureExtrapolation:
+1.
+2.
+3.

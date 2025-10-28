@@ -17,14 +17,14 @@ trixi_include(@__MODULE__,
 
 # IISPH doesn't require a large compact support like WCSPH and performs worse with a typical
 # smoothing length used for WCSPH.
-smoothing_length = 1.25 * fluid_particle_spacing
+smoothing_length =  1.25 * fluid_particle_spacing
 smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 # This kernel slightly overestimates the density, so we reduce the mass slightly
 # to obtain a density slightly below the reference density.
-# Otherwise, the fluid will jump slightly at the beginning of the simulation.
-println(maximum(tank.fluid.density))
-tank.fluid.mass .*= 0.97
-println(maximum(tank.fluid.density))
+# Otherwise, we will get a "pressure explosion", and the fluid will jump slightly at the
+# beginning of the simulation.
+tank.fluid.mass .*= 0.99
+
 # Calculate kinematic viscosity for the viscosity model.
 # Only ViscosityAdami and ViscosityMorris can be used for IISPH simulations since they don't
 # require a speed of sound.
@@ -33,11 +33,11 @@ nu = alpha * smoothing_length * sound_speed / 8
 viscosity = ViscosityAdami(; nu)
 
 # IISPH parameters
-time_step = 0.00025
-omega = 0.5
-min_iterations = 1
+time_step = 0.0002
+omega = 0.4
+min_iterations = 2
 max_iterations = 100
-max_error = 0.1
+max_error = 0.01
 
 # Use IISPH as fluid system
 fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,
@@ -50,8 +50,7 @@ fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,
                                                omega=omega,
                                                time_step=time_step)
 
-
-boundary_density_calculator=PressureZeroing()
+boundary_density_calculator=PressureMirroring()
 
 
 # ==========================================================================================
@@ -59,20 +58,20 @@ boundary_density_calculator=PressureZeroing()
 min_corner = minimum(tank.boundary.coordinates, dims=2)
 max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
-neighborhood_search = GridNeighborhoodSearch{2}()#; cell_list, update_strategy=ParallelUpdate())
-
+neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=ParallelUpdate())
+#neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=SerialUpdate())
 
 # ==========================================================================================
 # Overwrite the saving_callback such that we only get the first and the last time step as
 # result
-saving_callback = SolutionSavingCallback(dt=0.100, prefix=solution_prefix)
+saving_callback = SolutionSavingCallback(dt=100, prefix=solution_prefix)
 # Save at certain timepoints which allows comparison to the results of Marrone et al.,
 # i.e. t(g/H)^(1/2) = (1.5, 2.36, 3.0, 5.7, 6.45).
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.
 
 saving_paper = SolutionSavingCallback(save_times=[0.0, 1.5, 2.36, 3.0, 5.7, 6.45] ./
-                                                 sqrt(gravity / H), output_directory="Output/Performance/IISPH",
-                                      prefix="IISPH_Best_Performance")
+                                                 sqrt(gravity / H), output_directory="Output/Marrone/IISPH/PressureZeroing",
+                                      prefix="IISPH_PressureZeroing_Marrone")
 
 # Overwrite the callbacks
 callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
