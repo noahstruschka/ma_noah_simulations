@@ -100,3 +100,33 @@ function plot_dam_break_complete(file_directory, file_name, save_fig=false)
 
         return plt
 end
+
+function plot_cylinder_2d(file_directory, file_name, save_fig)
+        ic = vtk2trixi(file_directory)
+        xlim = (0, Inf)
+        ylim = (0, Inf)
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
+        color_palette = palette_marrone
+        c_lims = (0, 3)
+        markersize = 0.1
+        file_directory= "Results/Cylinder" * file_name
+
+        plt = plot(ic,
+             xlim=xlim,
+             ylim=ylim,
+             zcolor=velocity_magnitude,
+             color=color_palette,
+             colorbar = true,
+             clims=c_lims,
+             makersize=markersize,
+             #markershape=:rect,
+             legend=false,
+             dpi=400
+    )
+
+    if save_fig
+        savefig(plt, file_directory)
+        println("Saved file succesuflly in ", file_directory)
+    end
+
+    end
