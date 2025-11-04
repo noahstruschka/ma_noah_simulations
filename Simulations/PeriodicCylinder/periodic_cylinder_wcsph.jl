@@ -63,7 +63,7 @@ saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 1.5, 2.5, 5.0], outp
 
 info_callback = InfoCallback(interval=100)
 
-saving_callback = SolutionSavingCallback(dt=0.5, prefix="")
+saving_callback = SolutionSavingCallback(dt=0.02, prefix="")
 
 callbacks = CallbackSet(info_callback, saving_callback, UpdateCallback(), saving_paper)
 

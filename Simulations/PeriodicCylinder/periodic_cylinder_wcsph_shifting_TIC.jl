@@ -35,7 +35,7 @@ fluid_system = WeaklyCompressibleSPHSystem(fluid, fluid_density_calculator,
                                            smoothing_length, viscosity=ViscosityAdami(; nu),
                                            density_diffusion=nothing,
                                            acceleration=(acceleration_x, 0.0), correction=nothing,
-                                           pressure_acceleration=tensile_instability_control,
+                                           pressure_acceleration=TrixiParticles.tensile_instability_control,
                                            surface_tension=nothing,
                                            shifting_technique=shifting,
                                            reference_particle_spacing=0)
