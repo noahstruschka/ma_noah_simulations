@@ -107,9 +107,9 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         ylim = (0, Inf)
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
         color_palette = palette_marrone
-        c_lims = (0, 3)
+        #c_lims = (0, 3)
         markersize = 0.1
-        file_directory= "Results/Cylinder" * file_name
+        file_directory= "Results/PeriodicCylinder/" * file_name
 
         plt = plot(ic,
              xlim=xlim,
@@ -117,7 +117,7 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
              zcolor=velocity_magnitude,
              color=color_palette,
              colorbar = true,
-             clims=c_lims,
+             #clims=c_lims,
              makersize=markersize,
              #markershape=:rect,
              legend=false,
