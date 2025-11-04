@@ -48,6 +48,7 @@ boundary_model = BoundaryModelDummyParticles(boundary.density, boundary.mass,
                                              smoothing_kernel, smoothing_length)
 
 boundary_system = WallBoundarySystem(boundary, boundary_model)
+
 # ==========================================================================================
 # ==== Simulation
 periodic_box = PeriodicBox(min_corner=[0.0, -tank_size[2]],
@@ -59,7 +60,6 @@ ode = semidiscretize(semi, tspan)
 
 saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 1.5, 2.5, 5.0], output_directory="Output/Cylinder/IISPH/AdamiPressureExtrapolation",
                                       prefix="IISPH_AdamiPressureExtrapolation_Cylinder")
-
 
 info_callback = InfoCallback(interval=100)
 
