@@ -29,6 +29,8 @@ smoothing_kernel = WendlandC2Kernel{2}()
 fluid_density_calculator = ContinuityDensity()
 
 shifting = TransportVelocityAdami(background_pressure=pressure)
+shifting_technique = ConsistentShiftingSun2019()
+
 
 fluid_system = WeaklyCompressibleSPHSystem(fluid, fluid_density_calculator,
                                            state_equation, smoothing_kernel,
@@ -37,7 +39,7 @@ fluid_system = WeaklyCompressibleSPHSystem(fluid, fluid_density_calculator,
                                            acceleration=(acceleration_x, 0.0), correction=nothing,
                                            pressure_acceleration=nothing,
                                            surface_tension=nothing,
-                                           shifting_technique=shifting,
+                                           shifting_technique=shifting_technique,
                                            reference_particle_spacing=0)
 
 boundary_model = BoundaryModelDummyParticles(boundary.density, boundary.mass,

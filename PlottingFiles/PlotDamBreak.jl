@@ -107,7 +107,7 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         ylim = (0, Inf)
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
         color_palette = cgrad(:vik)
-        c_lims = (0, 3.6e-4)
+        c_lims = (0, 0.00036)
         markersize = 0.1
         file_directory= "Results/PeriodicCylinder/" * file_name
 
