@@ -105,9 +105,9 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         ic = vtk2trixi(file_directory)
         xlim = (0, Inf)
         ylim = (0, Inf)
-        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1)).*1000
         color_palette = cgrad(:vik)
-        c_lims = (0, 0.00036)
+        c_lims = (0, 0.36)
         markersize = 0.1
         file_directory= "Results/PeriodicCylinder/" * file_name
 
