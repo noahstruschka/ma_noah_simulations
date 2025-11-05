@@ -28,7 +28,7 @@ function plot_dam_break_2d(ic, x_lim, y_lim, z_color, color_palette, c_lims, mar
              color=color_palette,
              colorbar = true,
              clims=c_lims,
-             makersize=marker_size,
+             markersize=marker_size,
              markershape=:rect,
              legend=false,
              dpi=400
@@ -105,9 +105,12 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         ic = vtk2trixi(file_directory)
         xlim = (0, Inf)
         ylim = (0, Inf)
-        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1)).*1000
+        println(ic.velocity)
+        println(maximum(ic.velocity))
+        println(minimum(ic.velocity))
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1)[:])
         color_palette = cgrad(:vik)
-        c_lims = (0, 0.36)
+        c_lims = (0, 0.00036)
         markersize = 0.1
         file_directory= "Results/PeriodicCylinder/" * file_name
 
@@ -118,7 +121,7 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
              color=color_palette,
              colorbar = true,
              clims=c_lims,
-             makersize=markersize,
+             #markersize=markersize,
              #markershape=:rect,
              legend=false,
              dpi=400
@@ -129,4 +132,4 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         println("Saved file succesuflly in ", file_directory)
     end
 
-    end
+end
