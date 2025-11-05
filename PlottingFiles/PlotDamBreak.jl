@@ -108,7 +108,7 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         println(ic.velocity)
         println(maximum(ic.velocity))
         println(minimum(ic.velocity))
-        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1)[:])
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
         color_palette = cgrad(:vik)
         c_lims = (0, 0.00036)
         markersize = 0.1
@@ -117,7 +117,7 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         plt = plot(ic,
              xlim=xlim,
              ylim=ylim,
-             zcolor=velocity_magnitude,
+             zcolor=velocity_magnitude',
              color=color_palette,
              colorbar = true,
              clims=c_lims,
