@@ -29,7 +29,7 @@ function plot_dam_break_2d(ic, x_lim, y_lim, z_color, color_palette, c_lims, mar
              colorbar = true,
              clims=c_lims,
              markersize=marker_size,
-             markershape=:rect,
+             #markershape=:rect,
              legend=false,
              dpi=400
     )
@@ -50,7 +50,7 @@ function plot_dam_break_marrone(file_directory, file_name; save_fig=false)
     velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
     color_palette = palette_marrone #cgrad(:jet1, 11, categorical=true) # jet oder jet1 sind bisher am nähesten dran
     c_lims = (0,1.1)
-    marker_size = 1
+    marker_size = 0.5
     file_directory= "Results/Marrone/" * file_name
 
     plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
@@ -80,7 +80,7 @@ function plot_dam_break_close(file_directory, file_name; save_fig=false)
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
         color_palette = cgrad(:vik, 11, categorical=true)
         c_lims = (0,1.1)
-        marker_size = 5
+        marker_size = 3
         file_directory = "Results/DensityCalculators/" * file_name
         plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
 
