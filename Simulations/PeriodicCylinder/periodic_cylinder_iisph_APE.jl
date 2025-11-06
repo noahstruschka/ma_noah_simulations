@@ -7,7 +7,7 @@ pinthreads(:numa)
 
 # Load setup from dam break example
 trixi_include(@__MODULE__,
-              joinpath(examples_dir(), "fluid", "periodic_array_of_cylinders_2d.jl"),
+              joinpath("PeriodicCylinderExample.jl"),
               sol=nothing, ode=nothing)
 
 # IISPH doesn't require a large compact support like WCSPH and performs worse with a typical

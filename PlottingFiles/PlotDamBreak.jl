@@ -29,7 +29,6 @@ function plot_dam_break_2d(ic, x_lim, y_lim, z_color, color_palette, c_lims, mar
              colorbar = true,
              clims=c_lims,
              markersize=marker_size,
-             #markershape=:rect,
              legend=false,
              dpi=400
     )
@@ -50,8 +49,8 @@ function plot_dam_break_marrone(file_directory, file_name; save_fig=false)
     velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
     color_palette = palette_marrone #cgrad(:jet1, 11, categorical=true) # jet oder jet1 sind bisher am nähesten dran
     c_lims = (0,1.1)
-    marker_size = 0.5
-    file_directory= "Results/Marrone/" * file_name
+    marker_size = 0.85
+    file_directory= "Results/Marrone/Velocity" * file_name
 
     plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
 
@@ -65,7 +64,7 @@ function plot_dam_break_pressure(file_directory, file_name; save_fig=false)
     pressure = ic.pressure./(0.6 * 9.81 * ic.density)
     color_palette = palette_marrone #cgrad(:jet1, 11, categorical=true) # jet oder jet1 sind bisher am nähesten dran
     c_lims = (0,1.1)
-    marker_size = 1
+    marker_size = 0.85
     file_directory= "Results/Marrone/Pressure/" * file_name
 
     plt = plot_dam_break_2d(ic, x_lim, y_lim, pressure, color_palette, c_lims, marker_size, file_directory, save_fig)
@@ -80,7 +79,7 @@ function plot_dam_break_close(file_directory, file_name; save_fig=false)
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
         color_palette = cgrad(:vik, 11, categorical=true)
         c_lims = (0,1.1)
-        marker_size = 3
+        marker_size = 0.85
         file_directory = "Results/DensityCalculators/" * file_name
         plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
 
@@ -89,14 +88,14 @@ end
 
 function plot_dam_break_complete(file_directory, file_name, save_fig=false)
         ic = vtk2trixi(file_directory)
-        xlim = (0, 4)
-        ylim = (0, Inf)
+        x_lim = (0, 4)
+        y_lim = (0, Inf)
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
-        color_palette = palette(:cooltowarm, 11)
+        color_palette = cgrad(:vik, 11, categorical=true)
         c_lims = (0,1.1)
-        markersize = 0.1
+        marker_size = 0.85
         file_directory= "Results/" * file_name
-        plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, sav_fig)
+        plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
 
         return plt
 end
@@ -105,13 +104,10 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         ic = vtk2trixi(file_directory)
         xlim = (0, Inf)
         ylim = (0, Inf)
-        println(ic.velocity)
-        println(maximum(ic.velocity))
-        println(minimum(ic.velocity))
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
         color_palette = cgrad(:vik)
         c_lims = (0, 0.00036)
-        markersize = 0.1
+        markersize = 0.85
         file_directory= "Results/PeriodicCylinder/" * file_name
 
         plt = plot(ic,
@@ -121,8 +117,7 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
              color=color_palette,
              colorbar = true,
              clims=c_lims,
-             #markersize=markersize,
-             #markershape=:rect,
+             markersize=markersize,
              legend=false,
              dpi=400
     )
