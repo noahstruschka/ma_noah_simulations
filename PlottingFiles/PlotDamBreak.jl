@@ -24,13 +24,21 @@ function plot_dam_break_2d(ic, x_lim, y_lim, z_color, color_palette, c_lims, mar
     plt = plot(ic,
              xlim=x_lim,
              ylim=y_lim,
+             xlabel="x / 0.6",
+             ylabel="y / H",
              zcolor=z_color,
              color=color_palette,
              colorbar = true,
              clims=c_lims,
              markersize=marker_size,
              legend=false,
-             dpi=400
+             dpi=400,
+            framestyle=:box,      # schöner Rahmen
+            tickfont=font(10),    # größere Schrift
+            guidefont=font(12),   # dickere Achsenbeschriftung
+            lw=2,                 # Linienbreite
+            axis=:on,             # Achsen einblenden
+            grid=false            # kein Gitter
     )
 
     if save_fig
@@ -53,6 +61,22 @@ function plot_dam_break_marrone(file_directory, file_name; save_fig=false)
     file_directory= "Results/Marrone/Velocity" * file_name
 
     plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
+
+    return plt
+end
+
+function plot_dam_break_marrone2(file_directory, file_name; save_fig=false)
+    ic = vtk2trixi(file_directory)
+    ic.position .= ic.position./H
+    x_lim = (4, 5.4)
+    y_lim = (0, 1.2)
+    velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(0.6 * 9.81)
+    color_palette = palette_marrone #cgrad(:jet1, 11, categorical=true) # jet oder jet1 sind bisher am nähesten dran
+    c_lims = (0,1.1)
+    marker_size = 0.85
+    file_directory= "Results/Marrone/Velocity" * file_name
+
+    plt = plot_dam_break_2d(ic, x_lim, y_lim, x_labl, y_label, velocity_magnitude', color_palette, c_lims, marker_size, file_directory, save_fig)
 
     return plt
 end

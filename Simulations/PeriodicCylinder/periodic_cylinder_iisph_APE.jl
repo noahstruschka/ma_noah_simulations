@@ -7,9 +7,9 @@ pinthreads(:numa)
 
 # Load setup from dam break example
 trixi_include(@__MODULE__,
-              joinpath("PeriodicCylinderExample.jl"),
+              joinpath(examples_dir(), "fluid", "periodic_array_of_cylinders_2d.jl"),
               sol=nothing, ode=nothing)
-
+              
 # IISPH doesn't require a large compact support like WCSPH and performs worse with a typical
 # smoothing length used for WCSPH.
 smoothing_length =  1.25 * particle_spacing
