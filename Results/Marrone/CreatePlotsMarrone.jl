@@ -22,6 +22,9 @@ include("../../PlottingFiles/PlotDamBreak.jl")
 plot_dam_break_marrone("Output/Marrone/IISPH/PressureZeroing/IISPH_PressureZeroing_Marrone_fluid_1_7053.vtu",
                         "IISPH_Marrone_PressureZeroing", save_fig=save_files)
 
+plot_dam_break_marrone2("Output/Marrone/IISPH/PressureZeroing/IISPH_PressureZeroing_Marrone_fluid_1_7053.vtu",
+                        "IISPH_Marrone_PressureZeroing2", save_fig=save_files)
+
 plot_dam_break_marrone("Output/Marrone/IISPH/PressureMirroring/IISPH_PressureMirroring_Marrone_fluid_1_7050.vtu",
                        "IISPH_Marrone_PressureMirroring", save_fig=save_files)
 
