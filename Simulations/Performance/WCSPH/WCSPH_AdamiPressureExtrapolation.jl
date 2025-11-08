@@ -1,7 +1,6 @@
 # Add neccessary packages
 using TrixiParticles
 using OrdinaryDiffEq
-using Plots
 using ThreadPinning
 pinthreads(:numa)
 
@@ -23,18 +22,19 @@ trixi_include(@__MODULE__,
 density_diffusion = DensityDiffusionMolteniColagrossi(delta=0.1)
 # density_diffusion = DensityDiffusionAntuono(tank.fluid, delta=0.1)
 
-
-# viscosity
+# Viscosity
 alpha = 0.02
 
 
 # WCSPH parameters
-cfl = 1.8
-smoothing_length_factor = 2
+cfl = 2.1
+smoothing_length_factor = 1.75
 
 
+# Smoothing length and kernel
 smoothing_length = smoothing_length_factor * fluid_particle_spacing
 smoothing_kernel = WendlandC2Kernel{2}()
+
 
 # ==========================================================================================
 # Define a GPU-compatible neighborhood search
@@ -42,7 +42,7 @@ min_corner = minimum(tank.boundary.coordinates, dims=2)
 max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
 neighborhood_search = GridNeighborhoodSearch{2}(; cell_list, update_strategy=ParallelUpdate())
-#neighborhood_search = GridNeighborhoodSearch{2}(; cell_list, update_strategy=SerialUpdate())
+
 
 # ==========================================================================================
 # Overwrite the saving_callback such that we only get the first and the last time step as
@@ -53,19 +53,20 @@ saving_callback = SolutionSavingCallback(dt=100, prefix=solution_prefix)
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.
 
 saving_paper = SolutionSavingCallback(save_times=[0.0, 1.5, 2.36, 3.0, 5.7, 6.45] ./
-                                                 sqrt(gravity / H), output_directory="Output/Marrone/WCSPH/AdamiPressureExtrapolation",
-                                      prefix="WCSPH_AdamiPressureExtrapolation_Marrone")
+                                                 sqrt(gravity / H), output_directory="Output/Performance/WCSPH",
+                                      prefix="WCSPH_Best_Performance")
 
 stepsize_callback = StepsizeCallback(cfl=cfl)
 
 callbacks = CallbackSet(info_callback, saving_callback, stepsize_callback, saving_paper)
+
 # Run the dam break simulation with these changes
 trixi_include(@__MODULE__,
               joinpath(examples_dir(), "fluid", "dam_break_2d.jl"),
               fluid_particle_spacing=fluid_particle_spacing,
               density_diffusion=density_diffusion,
+              alpha=alpha,
               smoothing_kernel=smoothing_kernel,
               smoothing_length=smoothing_length,
-              alpha=alpha,
               neighborhood_search=neighborhood_search,
               callbacks=callbacks)
