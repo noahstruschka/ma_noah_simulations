@@ -78,6 +78,7 @@ fluid_system = ImplicitIncompressibleSPHSystem(fluid, smoothing_kernel,
                                                viscosity=ViscosityAdami(; nu),
                                                acceleration=(acceleration_x, 0.0),
                                                min_iterations=min_iterations,
+                                               shifting_technique=ParticleShiftingTechniqueSun2017(),
                                                max_iterations=max_iterations,
                                                max_error=max_error,
                                                omega=omega,
@@ -112,15 +113,15 @@ semi = Semidiscretization(fluid_system, boundary_system,
 
 ode = semidiscretize(semi, tspan)
 
-saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 0.6, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation",
-                                      prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder")
+saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 0.6, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/With_Shifting",
+                                      prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting")
 
 
 info_callback = InfoCallback(interval=10000)
 
 #saving_callback = SolutionSavingCallback(dt=0.02 * time_factor, prefix="")
 
-callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
+callbacks = CallbackSet(info_callback, UpdateCallback(), saving_paper)
 
 # Use a Sympletic Euler for IISPH
 sol = solve(ode, SymplecticEuler(),

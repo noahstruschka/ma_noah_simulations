@@ -120,7 +120,7 @@ info_callback = InfoCallback(interval=10000)
 
 #saving_callback = SolutionSavingCallback(dt=0.02 * time_factor, prefix="")
 
-callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
+callbacks = CallbackSet(info_callback, saving_paper)
 
 # Use a Sympletic Euler for IISPH
 sol = solve(ode, SymplecticEuler(),

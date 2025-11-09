@@ -105,7 +105,7 @@ info_callback = InfoCallback(interval=1000)
 
 #saving_callback = SolutionSavingCallback(dt=0.02 * time_factor, prefix="")
 
-callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
+callbacks = CallbackSet(info_callback,saving_paper)
 
 # Use a Runge-Kutta method with automatic (error based) time step size control
 sol = solve(ode, RDPK3SpFSAL49(), reltol=1e-7,

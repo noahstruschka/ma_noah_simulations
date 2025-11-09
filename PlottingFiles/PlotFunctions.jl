@@ -21,6 +21,7 @@ using TrixiParticles
 ]
 
 palette_marrone_velocity = cgrad(colors_marrone_velocity, categorical=true)
+palette_adami_velocity = cgrad(colors_marrone_velocity)
 
 # Color palette used for the normalized pressure by Marrone et al.
     colors_marrone_pressure = [
@@ -206,12 +207,12 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
 
         # get the required values from the initial condition
         ic = vtk2trixi(file_directory)
-        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1)).*10^3
 
         # set plotting parameters
-        color_palette = palette_marrone_velocity
-        c_lims = (0, 0.00036)
-        markersize = 1
+        color_palette = palette_adami_velocity
+        c_lims = (0, 0.00036).*10^3
+        #markersize = 1
 
         # output directory
         output_directory= "Results/PeriodicCylinder/" * file_name
@@ -222,7 +223,7 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
              color=color_palette,
              colorbar = true,
              clims=c_lims,
-             markersize=markersize,
+           #  markersize=markersize,
              legend=false,
              axis=false,
              dpi=400
