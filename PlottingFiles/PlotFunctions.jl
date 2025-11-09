@@ -152,23 +152,50 @@ function plot_dam_break_close(file_directory, file_name; save_fig=false)
     # get the required values from the initial condition
     ic = vtk2trixi(file_directory)
     ic.coordinates .= ic.coordinates./H
-    velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))./sqrt(H * g)
+    pressure = ic.pressure./(H * g * ic.density)
 
     # set plotting parameters
-    x_min = 4.2
-    x_max = 5.4
+    x_min = 4.6
+    x_max = 5.0
     y_min = 0
-    y_max = 1.2
+    y_max = 0.2
     x_lim = (x_min, x_max)
     y_lim = (y_min, y_max)
-    color_palette = cgrad(:vik, 11, categorical=true)
-    c_lims = (0,1.1)
-    marker_size = 0.85
+    color_palette = cgrad(:vik)
+    c_lims = (-0.1,1.1)
 
     # output directory
-    output_directory = "Results/DensityCalculators/" * file_name
+    output_directory = "Results/DamBreakClose/" * file_name
 
-    plt = plot_dam_break_2d(ic, x_lim, y_lim, velocity_magnitude', color_palette, c_lims, marker_size, output_directory, save_fig)
+    x_major_ticks = x_lim[1]:0.1:x_lim[2]
+    y_major_ticks = y_lim[1]:0.1:y_lim[2]
+
+    # Plot the result
+    plt = plot(ic,
+             xlim=x_lim,
+             ylim=y_lim,
+             xticks=(x_major_ticks, string.(x_major_ticks)),
+             yticks=(y_major_ticks, string.(y_major_ticks)),
+             tick_direction=:out,
+             xlabel="x / H",
+             ylabel="y / H",
+             color=color_palette,
+             colorbar = true,
+             clims=c_lims,
+             legend=false,
+             dpi=400,                   # resolution
+             tickfont=font(10),         # larger font
+             guidefont=font(12),        # ticker axis font
+             lw=2,                      # line width
+             axis=:on,                  # show axis
+             grid=true                  # show grid
+    )
+
+    # Save the figure
+    if save_fig
+        savefig(plt, output_directory)
+        println("Saved file succesuflly in ", output_directory)
+    end
 
     return plt
 end
@@ -207,12 +234,11 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
 
         # get the required values from the initial condition
         ic = vtk2trixi(file_directory)
-        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1)).*10^3
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1)).*10^4
 
         # set plotting parameters
         color_palette = palette_adami_velocity
-        c_lims = (0, 0.00036).*10^3
-        #markersize = 1
+        c_lims = (0, 0.00036).*10^4
 
         # output directory
         output_directory= "Results/PeriodicCylinder/" * file_name
@@ -223,7 +249,38 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
              color=color_palette,
              colorbar = true,
              clims=c_lims,
-           #  markersize=markersize,
+             legend=false,
+             axis=false,
+             dpi=400
+            )
+
+    # Save the figure
+    if save_fig
+        savefig(plt, output_directory)
+        println("Saved file succesuflly in ", output_directory)
+    end
+end
+
+# Plotting function for the 2d periodic cylinder example
+function plot_cylinder_2d(file_directory, file_name, save_fig)
+
+        # get the required values from the initial condition
+        ic = vtk2trixi(file_directory)
+        velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1)).*10^4
+
+        # set plotting parameters
+        color_palette = palette_marrone_velocity
+        c_lims = (0, 0.00036).*10^4
+
+        # output directory
+        output_directory= "Results/PeriodicCylinder/" * file_name
+
+        # Plot the result
+        plt = plot(ic,
+             zcolor=velocity_magnitude',
+             color=color_palette,
+             colorbar = true,
+             clims=c_lims,
              legend=false,
              axis=false,
              dpi=400
