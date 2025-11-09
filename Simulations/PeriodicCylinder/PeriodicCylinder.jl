@@ -4,26 +4,26 @@
 # WCSPH
 
 # Figure 5.3 (b): WCSPH without Shifting
-include("WCSPH/periodic_cylinder_wcsph.jl")
+include("WCSPH/WCSPH_no_shifting.jl")
 
 # Figure 5.3 (c): WCSPH with Shifting
-include("WCSPH/periodic_cylinder_wcsph_only_shifting.jl")
+include("WCSPH/WCSPH_only_shifting.jl")
 
 
 # Figure 5.3 (d): WCSPH with Shifting and typical
-include("WCSPH/periodic_cylinder_wcsph_shifting_TIC.jl")
+include("WCSPH/WCSPH_shifting_TIC.jl")
 
 
 # IISPH
 
 # Figure 5.3 (e): IISPH - Pressure Zeroing
-include("IISPH/periodic_cylinder_iisph_PZ.jl")
+include("IISPH/IISPH_PressureZeroing.jl")
 
 # Figure 5.3 (f): IISPH - Pressure Mirroring
-include("IISPH/periodic_cylinder_iisph_PM.jl")
+include("IISPH/IISPH_PressureMirroring.jl")
 
 # Figure 5.3 (g): IISPH - Adami Pressure Extrapolation
-include("IISPH/periodic_cylinder_iisph_APE.jl")
+include("IISPH/IISPH_AdamiPressureExtrapolation.jl")
 
 # Figure 5.3 (h): IISPH - Pressure Boundaries
-include("IISPH/periodic_cylinder_iisph_PB.jl")
+include("IISPH/IISPH_PressureBoundaries.jl")

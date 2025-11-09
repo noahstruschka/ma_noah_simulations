@@ -34,7 +34,7 @@ fluid_size = tank_size
 
 reference_velocity = 1.2e-4
 time_factor = cylinder_radius / reference_velocity
-tspan = (0.0, 0.5 * time_factor)
+tspan = (0.0, 2.5 * time_factor)
 
 fluid_density = 1000.0
 nu = 0.1 / fluid_density # viscosity parameter
@@ -102,10 +102,10 @@ saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 1.5, 2.5, 5.0].*time
 
 info_callback = InfoCallback(interval=1000)
 
-saving_callback = SolutionSavingCallback(dt=0.02 * time_factor, prefix="")
+#saving_callback = SolutionSavingCallback(dt=0.02 * time_factor, prefix="")
 
 callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
 
 # Use a Runge-Kutta method with automatic (error based) time step size control
-sol = solve(ode, RDPK3SpFSAL49(),
+sol = solve(ode, RDPK3SpFSAL49(), reltol=1e-7,
             save_everystep=false, callback=callbacks);
