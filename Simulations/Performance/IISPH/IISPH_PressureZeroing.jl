@@ -33,11 +33,11 @@ nu = alpha * smoothing_length * sound_speed / 8
 viscosity = ViscosityAdami(; nu)
 
 # IISPH parameters
-time_step = 0.0003
-omega = 0.3
+time_step = 0.0002
+omega = 0.5
 min_iterations = 1
 max_iterations = 100
-max_error = 0.2
+max_error = 0.1
 
 # Use IISPH as fluid system
 fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,

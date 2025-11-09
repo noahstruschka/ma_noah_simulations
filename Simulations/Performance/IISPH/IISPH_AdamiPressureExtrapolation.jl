@@ -35,9 +35,9 @@ viscosity = ViscosityAdami(; nu)
 # IISPH parameters
 time_step = 0.0002
 omega = 0.5
-min_iterations = 2
+min_iterations = 1
 max_iterations = 100
-max_error = 0.1
+max_error = 0.2
 
 # Use IISPH as fluid system
 fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,
@@ -59,7 +59,6 @@ min_corner = minimum(tank.boundary.coordinates, dims=2)
 max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
 neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=ParallelUpdate())
-#neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=SerialUpdate())
 
 # ==========================================================================================
 # Overwrite the saving_callback such that we only get the first and the last time step as

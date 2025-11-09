@@ -13,7 +13,7 @@ include("../../PlottingFiles/PlotFunctions.jl")
 # Set to false if you do not want to solve all the files
 save_files = true
 
-
+plot_cylinder_2d("Output/Cylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_fluid_1_83401.vtu", "IISPH_Cylinder_AdamiPressureExtrapolation1", save_files)
 # Outputs from the the comparison with the paper from Adami et al.
 
 # Note that in the thesis only the second plot is shown for each method, since this is the

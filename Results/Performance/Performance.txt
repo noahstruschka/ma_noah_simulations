@@ -1,0 +1,491 @@
+IISPH
+
+Pressure Mirroring
+
+1. Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.1
+                Time: 159s!!!
+
+2. Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.2
+                Time: Error
+
+3. Simulation
+    time step = 0.0002,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+4. Simulation
+    time step = 0.0002,
+        omega = 0.4,
+            max_error = 0.1
+                Time: 218s
+
+
+5. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.1
+                Time: 218s
+
+6. Simulation
+    time step = 0.00025,
+        omega = 0.5,
+            max_error = 0.1
+                Time: 162s
+
+6. Simulation
+    time step = 0.00025,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+7. Simulation
+    time step = 0.00025,
+        omega = 0.5,
+            max_error = 0.2
+                Time: Error
+
+8. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.2
+                Time: 144s
+
+9. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.3
+                Time: Error
+
+10. Simulation
+    time step = 0.0003,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+11. Simulation
+    time step = 0.0003,
+        omega = 0.5,
+            max_error = 0.1
+                Time: Error
+
+
+12. Simulation
+    time step = 0.0003,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+
+13. Simulation
+    time step = 0.0003,
+        omega = 0.3,
+            max_error = 0.1
+                Time: 279s
+
+14. Simulation
+    time step = 0.0003,
+        omega = 0.3,
+            max_error = 0.2
+                Time: Error
+
+
+--> 159 Sekunden
+
+Pressure Zeroing:
+
+1. Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.1
+                Time: 173s / 167s
+
+2. Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.2
+                Time: 145s !!!
+
+3. Simulation
+    time step = 0.0002,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+4. Simulation
+    time step = 0.0002,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+
+5. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+6. Simulation
+    time step = 0.00025,
+        omega = 0.5,
+            max_error = 0.1
+                Time: Error
+
+6. Simulation
+    time step = 0.00025,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+7. Simulation
+    time step = 0.00025,
+        omega = 0.5,
+            max_error = 0.2
+                Time: Error
+
+8. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.2
+                Time: Error
+
+9. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.3
+                Time: Error
+
+10. Simulation
+    time step = 0.0003,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+11. Simulation
+    time step = 0.0003,
+        omega = 0.5,
+            max_error = 0.1
+                Time: Error
+
+
+12. Simulation
+    time step = 0.0003,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+
+13. Simulation
+    time step = 0.0003,
+        omega = 0.3,
+            max_error = 0.1
+                Time: Error
+
+14. Simulation
+    time step = 0.0003,
+        omega = 0.3,
+            max_error = 0.2
+                Time: Error
+
+--> 145 Sekunden
+
+Adami Pressure Extrapolation
+
+1. Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.1
+                Time: Error
+
+1.1 Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.1
+                min_iterations = 2
+                Time: 201s
+
+2. Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.2
+                Time: 150s!!!
+
+3. Simulation
+    time step = 0.0002,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+4. Simulation
+    time step = 0.0002,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+
+5. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+6. Simulation
+    time step = 0.00025,
+        omega = 0.5,
+            max_error = 0.1
+                Time: Error
+
+6. Simulation
+    time step = 0.00025,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+7. Simulation
+    time step = 0.00025,
+        omega = 0.5,
+            max_error = 0.2
+                Time: Error
+
+8. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.2
+                Time: Error
+
+9. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.3
+                Time: Error
+
+10. Simulation
+    time step = 0.0003,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+11. Simulation
+    time step = 0.0003,
+        omega = 0.5,
+            max_error = 0.1
+                Time: Error
+
+
+12. Simulation
+    time step = 0.0003,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+
+13. Simulation
+    time step = 0.0003,
+        omega = 0.3,
+            max_error = 0.1
+                Time: Error
+
+14. Simulation
+    time step = 0.0003,
+        omega = 0.3,
+            max_error = 0.2
+                Time: Error
+
+--> 150s
+
+Pressure Boundaries
+
+1. Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.1
+                Time: 167s !!!
+
+1.1 Simulation
+    time step = 0.0002,
+        omega = 0.6,
+            max_error = 0.1
+                min_iterations = 2
+                Time: 175s
+
+
+2. Simulation
+    time step = 0.0002,
+        omega = 0.5,
+            max_error = 0.2
+                Time: Error
+
+3. Simulation
+    time step = 0.0002,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+4. Simulation
+    time step = 0.0002,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+
+5. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.1
+                Time: 191s
+
+6. Simulation
+    time step = 0.00025,
+        omega = 0.5,
+            max_error = 0.1
+                Time: Error
+
+6. Simulation
+    time step = 0.00025,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+7. Simulation
+    time step = 0.00025,
+        omega = 0.5,
+            max_error = 0.2
+                Time: Error
+
+8. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.2
+                Time: Error
+
+9. Simulation
+    time step = 0.00025,
+        omega = 0.4,
+            max_error = 0.3
+                Time: 134s
+
+10. Simulation
+    time step = 0.0003,
+        omega = 0.4,
+            max_error = 0.1
+                Time: 202s
+
+11. Simulation
+    time step = 0.0003,
+        omega = 0.5,
+            max_error = 0.1
+                Time: Error
+
+
+12. Simulation
+    time step = 0.0003,
+        omega = 0.6,
+            max_error = 0.1
+                Time: Error
+
+
+13. Simulation
+    time step = 0.0003,
+        omega = 0.3,
+            max_error = 0.1
+                Time: Error
+
+14. Simulation
+    time step = 0.0003,
+        omega = 0.3,
+            max_error = 0.2
+                Time: Error
+
+15. Simulation
+    time step = 0.00035,
+        omega = 0.4,
+            max_error = 0.1
+                Time: 208s
+
+16. Simulation
+    time step = 0.0004,
+        omega = 0.4,
+            max_error = 0.1
+                Time: Error
+
+17. Simulation
+    time step = 0.00045,
+        omega = 0.4,
+            max_error = 0.1
+                Time: 224s
+
+--> 167 Sekunden
+
+WCSPH:
+
+1. Simulation:
+    smoothing length: 1.25
+        CFL: 1.9
+            Time: 304s
+
+2. Simulation:
+    smoothing length: 1.25
+        CFL: 2.0
+            Time: Error
+
+3. Simulation:
+    smoothing length: 1.25
+        CFL: 2.1
+            Time: Error
+
+4. Simulation:
+    smoothing length: 1.5
+        CFL: 1.9
+            Time: 273s
+
+5. Simulation:
+    smoothing length: 1.5
+        CFL: 2.0
+            Time: 287s
+
+6. Simulation:
+    smoothing length: 1.5
+        CFL: 2.1
+            Time: 241s
+
+11. Simulation:
+    smoothing length: 1.5
+        CFL: 2.2
+            Time: Error
+
+7. Simulation:
+    smoothing length: 1.75
+        CFL: 1.9
+            Time: 279s
+
+8. Simulation:
+    smoothing length: 1.75
+        CFL: 2.0
+            Time: 239s
+
+9. Simulation:
+    smoothing length: 1.75
+        CFL: 2.1
+            Time: 236s!
+
+10. Simulation:
+    smoothing length: 1.75
+        CFL: 2.2
+            Time: Error
+
+--> 236 Sekunden
+
+
+Total results
+
+IISPH - PressureZeroing: 145 Sekunden
+IISPH - PressureMirroring: 159 Sekunden
+IISPH - AdamiPressureExtrapolation: 150 Sekunden
+IISPH - PressureBoundaries: 167 Sekunden
+WCSPH - AdamiPressureExtrapolation: 236 Sekunden
