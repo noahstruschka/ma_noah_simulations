@@ -73,3 +73,7 @@ plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressur
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_33334.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting2", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_83335.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting3", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_138891.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting4", save_files)
+
+
+plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_AdamiPressureExtrapolation2_fluid_1_138893.vtu", "IISPH/IISPH_APE_Omega_04", save_files)
+plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_AdamiPressureExtrapolation3_fluid_1_138893.vtu", "IISPH/IISPH_APE_Omega_05", save_files)
