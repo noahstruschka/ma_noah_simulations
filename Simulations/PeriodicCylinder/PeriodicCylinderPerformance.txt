@@ -241,3 +241,38 @@ save solution                        129    8.75s    2.6%  67.8ms   1.86GiB   48
 
 
 7. Simulation - PressureBoundaries
+427 Sekunden 
+────────────────────────────────────────────────────────────────────────────────────────────
+            TrixiParticles.jl                      Time                    Allocations
+                                          ───────────────────────   ────────────────────────
+            Tot / % measured:                   427s /  88.8%           4.36GiB /  99.1%
+
+Section                           ncalls     time    %tot     avg     alloc    %tot      avg
+────────────────────────────────────────────────────────────────────────────────────────────
+kick!                               139k     355s   93.8%  2.56ms   2.26GiB   52.3%  17.0KiB
+  update systems and nhs            139k     313s   82.6%  2.25ms   1.70GiB   39.4%  12.8KiB
+    pressure solver                 139k     106s   27.9%   760μs    539MiB   12.2%  3.97KiB
+      pressure solver iteration     139k    91.3s   24.1%   657μs    471MiB   10.6%  3.47KiB
+      ~pressure solver~             139k    14.3s    3.8%   103μs   67.9MiB    1.5%     512B
+    predict advection               139k    95.8s   25.3%   689μs    450MiB   10.2%  3.31KiB
+    update nhs                      139k    41.6s   11.0%   300μs    170MiB    3.8%  1.25KiB
+    compute density                 278k    37.6s    9.9%   135μs    390MiB    8.8%  1.44KiB
+    ~update systems and nhs~        139k    32.3s    8.5%   233μs    195MiB    4.4%  1.44KiB
+  system interaction                139k    26.3s    6.9%   189μs    347MiB    7.8%  2.55KiB
+    fluid1-fluid1                   139k    12.6s    3.3%  90.5μs    108MiB    2.4%     816B
+    fluid1-boundary2                139k    10.5s    2.8%  75.6μs    108MiB    2.4%     816B
+    ~system interaction~            139k    3.18s    0.8%  22.9μs    130MiB    2.9%     984B
+    boundary2-fluid1                139k   3.81ms    0.0%  27.4ns     0.00B    0.0%    0.00B
+    boundary2-boundary2             139k   3.67ms    0.0%  26.4ns     0.00B    0.0%    0.00B
+  source terms                      139k    7.19s    1.9%  51.7μs    216MiB    4.9%  1.59KiB
+  reset ∂v/∂t                       139k    7.15s    1.9%  51.5μs   4.24MiB    0.1%    32.0B
+  ~kick!~                           139k    1.58s    0.4%  11.4μs   1.55KiB    0.0%    0.01B
+drift!                              139k    15.1s    4.0%   108μs    221MiB    5.0%  1.63KiB
+  velocity                          139k    7.19s    1.9%  51.7μs    216MiB    4.9%  1.59KiB
+  reset ∂u/∂t                       139k    7.09s    1.9%  51.0μs   4.24MiB    0.1%    32.0B
+  ~drift!~                          139k    796ms    0.2%  5.73μs      976B    0.0%    0.01B
+save solution                        128    8.50s    2.2%  66.4ms   1.85GiB   42.8%  14.8MiB
+  write to vtk                       256    7.46s    2.0%  29.1ms   1.69GiB   39.2%  6.77MiB
+  ~save solution~                    128    682ms    0.2%  5.33ms    156MiB    3.5%  1.22MiB
+  update systems                     128    362ms    0.1%  2.83ms   1.64MiB    0.0%  13.1KiB
+────────────────────────────────────────────────────────────────────────────────────────────
