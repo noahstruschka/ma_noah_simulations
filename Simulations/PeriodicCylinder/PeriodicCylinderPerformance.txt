@@ -241,7 +241,7 @@ save solution                        129    8.75s    2.6%  67.8ms   1.86GiB   48
 
 
 7. Simulation - PressureBoundaries
-427 Sekunden 
+427 Sekunden
 ────────────────────────────────────────────────────────────────────────────────────────────
             TrixiParticles.jl                      Time                    Allocations
                                           ───────────────────────   ────────────────────────
@@ -275,4 +275,54 @@ save solution                        128    8.50s    2.2%  66.4ms   1.85GiB   42
   write to vtk                       256    7.46s    2.0%  29.1ms   1.69GiB   39.2%  6.77MiB
   ~save solution~                    128    682ms    0.2%  5.33ms    156MiB    3.5%  1.22MiB
   update systems                     128    362ms    0.1%  2.83ms   1.64MiB    0.0%  13.1KiB
+────────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+8 . IISPH with Shifting
+982 Sekunden
+────────────────────────────────────────────────────────────────────────────────────────────
+            TrixiParticles.jl                      Time                    Allocations
+                                          ───────────────────────   ────────────────────────
+            Tot / % measured:                   982s /  96.0%           5.86GiB /  98.4%
+
+Section                           ncalls     time    %tot     avg     alloc    %tot      avg
+────────────────────────────────────────────────────────────────────────────────────────────
+kick!                               278k     599s   63.5%  2.16ms   3.68GiB   63.7%  13.9KiB
+  update systems and nhs            278k     520s   55.2%  1.87ms   2.59GiB   44.9%  9.78KiB
+    predict advection               278k     179s   18.9%   643μs    886MiB   15.0%  3.27KiB
+    pressure solver                 278k     163s   17.3%   588μs    729MiB   12.3%  2.69KiB
+      pressure solver iteration     278k     148s   15.7%   535μs    657MiB   11.1%  2.42KiB
+      ~pressure solver~             278k    14.8s    1.6%  53.4μs   72.1MiB    1.2%     272B
+    update nhs                      278k    78.2s    8.3%   281μs    339MiB    5.7%  1.25KiB
+    compute density                 278k    36.0s    3.8%   130μs    373MiB    6.3%  1.38KiB
+    ~update systems and nhs~        278k    36.0s    3.8%   130μs   2.14KiB    0.0%    0.01B
+    compute boundary pressure       278k    14.5s    1.5%  52.3μs    237MiB    4.0%     896B
+    inverse state equation          278k    13.5s    1.4%  48.6μs   89.0MiB    1.5%     336B
+  system interaction                278k    48.6s    5.1%   175μs    672MiB   11.4%  2.48KiB
+    fluid1-fluid1                   278k    23.7s    2.5%  85.2μs    216MiB    3.7%     816B
+    fluid1-boundary2                278k    20.3s    2.2%  73.0μs    195MiB    3.3%     736B
+    ~system interaction~            278k    4.61s    0.5%  16.6μs    261MiB    4.4%     984B
+    boundary2-boundary2             278k   8.80ms    0.0%  31.7ns     0.00B    0.0%    0.00B
+    boundary2-fluid1                278k   8.79ms    0.0%  31.7ns     0.00B    0.0%    0.00B
+  source terms                      278k    13.8s    1.5%  49.6μs    432MiB    7.3%  1.59KiB
+  reset ∂v/∂t                       278k    13.1s    1.4%  47.3μs   8.48MiB    0.1%    32.0B
+  ~kick!~                           278k    3.15s    0.3%  11.3μs   1.55KiB    0.0%    0.01B
+update callback                     139k     311s   33.0%  2.24ms   1.55GiB   26.8%  11.7KiB
+  update systems and nhs            139k     259s   27.4%  1.86ms   1.34GiB   23.2%  10.1KiB
+  particle shifting                 139k    50.2s    5.3%   362μs    212MiB    3.6%  1.56KiB
+    particle shifting               139k    49.7s    5.3%   358μs    212MiB    3.6%  1.56KiB
+    ~particle shifting~             139k    514ms    0.1%  3.70μs      672B    0.0%    0.00B
+  ~update callback~                 139k    1.99s    0.2%  14.4μs   1.84KiB    0.0%    0.01B
+  update open boundary              139k   5.55ms    0.0%  40.0ns     0.00B    0.0%    0.00B
+  update particle packing           139k   5.31ms    0.0%  38.2ns     0.00B    0.0%    0.00B
+  update TVF                        139k   3.83ms    0.0%  27.6ns     0.00B    0.0%    0.00B
+drift!                              278k    29.9s    3.2%   108μs    441MiB    7.5%  1.63KiB
+  reset ∂u/∂t                       278k    15.0s    1.6%  53.8μs   8.48MiB    0.1%    32.0B
+  velocity                          278k    13.3s    1.4%  48.0μs    432MiB    7.3%  1.59KiB
+  ~drift!~                          278k    1.58s    0.2%  5.71μs      976B    0.0%    0.00B
+save solution                          4    3.34s    0.4%   834ms    118MiB    2.0%  29.4MiB
+  write to vtk                         8    2.12s    0.2%   265ms   60.7MiB    1.0%  7.59MiB
+  ~save solution~                      4    1.21s    0.1%   303ms   56.9MiB    1.0%  14.2MiB
+  update systems                       4   7.00ms    0.0%  1.75ms   40.4KiB    0.0%  10.1KiB
 ────────────────────────────────────────────────────────────────────────────────────────────

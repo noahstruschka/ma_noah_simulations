@@ -97,7 +97,7 @@ semi = Semidiscretization(fluid_system, boundary_system,
 
 ode = semidiscretize(semi, tspan)
 
-saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/WCSPH/No_Shifting",
+saving_paper = SolutionSavingCallback(save_times=[0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/WCSPH/No_Shifting",
                                       prefix="WCSPH_NoShifting_PeriodicCylinder")
 
 info_callback = InfoCallback(interval=1000)

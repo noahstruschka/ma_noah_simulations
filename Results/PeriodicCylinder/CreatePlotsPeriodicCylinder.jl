@@ -29,6 +29,7 @@ plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_Per
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_434.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting4", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_866.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting5", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_1303.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting6", save_files)
+plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_1303.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting6", save_files)
 #plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_500.vtu", "WCSPH/WCSPH_PeriodicCylinder_PressureZeroing7", save_files)
 
 # # Figure 5.3 (c) WCSPH - with Shifting
