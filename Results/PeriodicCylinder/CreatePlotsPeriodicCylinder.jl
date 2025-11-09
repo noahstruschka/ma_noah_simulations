@@ -8,7 +8,8 @@
 
 using Plots
 include("../../PlottingFiles/PlotFunctions.jl")
-
+plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_Cylinder_fluid_1_83401.vtu", "IISPH_Cylinder_AdamiPressureExtrapolation1", save_files)
+plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_Cylinder_fluid_1_250084.vtu", "IISPH_Cylinder_AdamiPressureExtrapolation2", save_files)
 
 # Set to false if you do not want to solve all the files
 save_files = true

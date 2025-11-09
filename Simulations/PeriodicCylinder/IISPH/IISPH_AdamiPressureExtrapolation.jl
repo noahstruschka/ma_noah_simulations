@@ -72,7 +72,7 @@ fluid.mass .*= 0.99
 
 # IISPH parameters
 time_step = 0.003
-omega = 0.6
+omega = 0.5
 min_iterations = 1
 max_iterations = 100
 max_error = 0.1
@@ -121,7 +121,7 @@ saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 1.5, 2.5, 5.0].*time
                                       prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder")
 
 
-info_callback = InfoCallback(interval=10000)
+info_callback = InfoCallback(interval=1000)
 
 saving_callback = SolutionSavingCallback(dt=0.02 * time_factor, prefix="")
 
@@ -131,3 +131,9 @@ callbacks = CallbackSet(info_callback, saving_callback, saving_paper)
 sol = solve(ode, SymplecticEuler(),
             dt=time_step,
             save_everystep=false, callback=callbacks);
+
+using Plots
+
+include("../../../PlottingFiles/PlotFunctions.jl")
+plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_Cylinder_fluid_1_83417.vtu", "IISPH_Cylinder_AdamiPressureExtrapolation1", save_files)
+plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_Cylinder_fluid_1_250084.vtu", "IISPH_Cylinder_AdamiPressureExtrapolation2", save_files)

@@ -207,11 +207,11 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
         # get the required values from the initial condition
         ic = vtk2trixi(file_directory)
         velocity_magnitude = sqrt.(sum(ic.velocity.^2, dims=1))
-        
+
         # set plotting parameters
-        color_palette = colors_marrone_pressure
+        color_palette = palette_marrone_velocity
         c_lims = (0, 0.00036)
-        markersize = 0.85
+        markersize = 1
 
         # output directory
         output_directory= "Results/PeriodicCylinder/" * file_name

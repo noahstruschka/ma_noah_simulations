@@ -121,7 +121,7 @@ saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 1.5, 2.5, 5.0].*time
                                       prefix="IISPH_PressureMirroring_PeriodicCylinder")
 
 
-info_callback = InfoCallback(interval=10000)
+info_callback = InfoCallback(interval=1000)
 
 saving_callback = SolutionSavingCallback(dt=0.02 * time_factor, prefix="")
 
