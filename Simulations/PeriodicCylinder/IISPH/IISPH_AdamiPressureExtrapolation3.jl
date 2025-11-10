@@ -59,28 +59,40 @@ boundary = union(cylinder, box.boundary)
 
 # ==========================================================================================
 # ==== Fluid
-smoothing_length = 2.0 * particle_spacing
-smoothing_kernel = WendlandC2Kernel{2}()
-state_equation = StateEquationCole(; sound_speed, reference_density=fluid_density,
-                                   exponent=1, clip_negative_pressure=false)
 
-density_diffusion = DensityDiffusionAntuono(fluid, delta=0.1)
+# IISPH doesn't require a large compact support like WCSPH and performs worse with a typical
+# smoothing length used for WCSPH.
+smoothing_length =  1.25 * particle_spacing
+smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 
-shifting_technique = nothing
-pressure_acceleration = nothing
+# IISPH parameters
+time_step = 0.003
+omega = 0.5
+min_iterations = 1
+max_iterations = 100
+max_error = 0.1
 
-fluid_system = WeaklyCompressibleSPHSystem(fluid, ContinuityDensity(), state_equation,
-                                           smoothing_kernel, smoothing_length,
-                                           viscosity=ViscosityAdami(; nu),
-                                           density_diffusion=density_diffusion,
-                                           shifting_technique=shifting_technique,
-                                           pressure_acceleration=pressure_acceleration,
-                                           acceleration=(acceleration_x, 0.0))
+# Use IISPH as fluid system
+fluid_system = ImplicitIncompressibleSPHSystem(fluid, smoothing_kernel,
+                                               smoothing_length, fluid_density,
+                                               viscosity=ViscosityAdami(; nu),
+                                               acceleration=(acceleration_x, 0.0),
+                                               min_iterations=min_iterations,
+                                               max_iterations=max_iterations,
+                                               max_error=max_error,
+                                               omega=omega,
+                                               time_step=time_step)
 
 # ==========================================================================================
 # ==== Boundary
+
+state_equation = StateEquationCole(; sound_speed, reference_density=fluid_density,
+                                   exponent=1, clip_negative_pressure=false)
+
+boundary_density_calculator = AdamiPressureExtrapolation()
+
 boundary_model = BoundaryModelDummyParticles(boundary.density, boundary.mass,
-                                             AdamiPressureExtrapolation(),
+                                             boundary_density_calculator,
                                              viscosity=ViscosityAdami(; nu),
                                              smoothing_kernel, smoothing_length,
                                              state_equation=state_equation)
@@ -100,15 +112,17 @@ semi = Semidiscretization(fluid_system, boundary_system,
 
 ode = semidiscretize(semi, tspan)
 
-saving_paper = SolutionSavingCallback(save_times=[0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/WCSPH/No_Shifting",
-                                      prefix="WCSPH_NoShifting_PeriodicCylinder")
+saving_paper = SolutionSavingCallback(save_times=[0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation",
+                                      prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder_AdamiPressureExtrapolation3")
 
-info_callback = InfoCallback(interval=1000)
+
+info_callback = InfoCallback(interval=10000)
 
 #saving_callback = SolutionSavingCallback(dt=0.02 * time_factor, prefix="")
 
 callbacks = CallbackSet(info_callback, saving_paper)
 
-# Use a Runge-Kutta method with automatic (error based) time step size control
-sol = solve(ode, RDPK3SpFSAL49(), reltol=1e-7,
+# Use a Sympletic Euler for IISPH
+sol = solve(ode, SymplecticEuler(),
+            dt=time_step,
             save_everystep=false, callback=callbacks);

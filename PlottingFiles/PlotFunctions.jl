@@ -155,30 +155,30 @@ function plot_dam_break_close(file_directory, file_name; save_fig=false)
     pressure = ic.pressure./(H * g * ic.density)
 
     # set plotting parameters
-    x_min = 4.6
-    x_max = 5.0
+    x_min = 5.2
+    x_max = 5.37
     y_min = 0
-    y_max = 0.2
+    y_max = 0.1
     x_lim = (x_min, x_max)
     y_lim = (y_min, y_max)
     color_palette = cgrad(:vik)
-    c_lims = (-0.1,1.1)
+    c_lims = (0,0.1)
 
     # output directory
     output_directory = "Results/DamBreakClose/" * file_name
 
-    x_major_ticks = x_lim[1]:0.1:x_lim[2]
-    y_major_ticks = y_lim[1]:0.1:y_lim[2]
+    #x_major_ticks = x_lim[1]:0.1:x_lim[2]
+    #y_major_ticks = y_lim[1]:0.1:y_lim[2]
 
     # Plot the result
     plt = plot(ic,
              xlim=x_lim,
              ylim=y_lim,
-             xticks=(x_major_ticks, string.(x_major_ticks)),
-             yticks=(y_major_ticks, string.(y_major_ticks)),
-             tick_direction=:out,
-             xlabel="x / H",
-             ylabel="y / H",
+             #xticks=(x_major_ticks, string.(x_major_ticks)),
+             #yticks=(y_major_ticks, string.(y_major_ticks)),
+             #tick_direction=:out,
+             #xlabel="x / H",
+             #ylabel="y / H",
              color=color_palette,
              colorbar = true,
              clims=c_lims,

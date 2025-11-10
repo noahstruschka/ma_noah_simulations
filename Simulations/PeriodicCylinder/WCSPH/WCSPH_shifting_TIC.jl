@@ -64,12 +64,15 @@ smoothing_kernel = WendlandC2Kernel{2}()
 state_equation = StateEquationCole(; sound_speed, reference_density=fluid_density,
                                    exponent=1, clip_negative_pressure=false)
 
+density_diffusion = DensityDiffusionAntuono(fluid, delta=0.1)
+
 shifting_technique = ConsistentShiftingSun2019()
 pressure_acceleration = TrixiParticles.tensile_instability_control
 
 fluid_system = WeaklyCompressibleSPHSystem(fluid, ContinuityDensity(), state_equation,
                                            smoothing_kernel, smoothing_length,
                                            viscosity=ViscosityAdami(; nu),
+                                           density_diffusion=density_diffusion,
                                            shifting_technique=shifting_technique,
                                            pressure_acceleration=pressure_acceleration,
                                            acceleration=(acceleration_x, 0.0))

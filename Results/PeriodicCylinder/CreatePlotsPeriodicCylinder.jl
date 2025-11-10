@@ -23,9 +23,9 @@ save_files = true
 # Figure 5.3 - Comparison of the velocity magnitude |v|
 
 # Figure 5.3 (b) WCSPH - without Shifting
-plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_2189.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting1", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_6945.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting2", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_11861.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting3", save_files)
+plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_2370.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting1", save_files)
+plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_7491.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting2", save_files)
+plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_12583.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting3", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_434.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting4", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_866.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting5", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_1303.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting6", save_files)
