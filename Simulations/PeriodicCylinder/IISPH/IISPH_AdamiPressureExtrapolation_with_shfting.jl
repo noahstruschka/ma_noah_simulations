@@ -67,10 +67,12 @@ smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 
 # IISPH parameters
 time_step = 0.003
-omega = 0.5
+omega = 0.3
 min_iterations = 1
 max_iterations = 100
 max_error = 0.1
+
+shifting_technique=ParticleShiftingTechniqueSun2017()
 
 # Use IISPH as fluid system
 fluid_system = ImplicitIncompressibleSPHSystem(fluid, smoothing_kernel,
@@ -112,8 +114,8 @@ semi = Semidiscretization(fluid_system, boundary_system,
 
 ode = semidiscretize(semi, tspan)
 
-saving_paper = SolutionSavingCallback(save_times=[0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation",
-                                      prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder_AdamiPressureExtrapolation3")
+saving_paper = SolutionSavingCallback(save_times=[0.0, 0.2, 0.3, 0.4, 0.5, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/With_Shifting",
+                                      prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting")
 
 
 info_callback = InfoCallback(interval=10000)

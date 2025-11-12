@@ -67,7 +67,7 @@ smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 
 # IISPH parameters
 time_step = 0.003
-omega = 0.4
+omega = 0.1
 min_iterations = 1
 max_iterations = 100
 max_error = 0.1
@@ -89,7 +89,7 @@ fluid_system = ImplicitIncompressibleSPHSystem(fluid, smoothing_kernel,
 state_equation = StateEquationCole(; sound_speed, reference_density=fluid_density,
                                    exponent=1, clip_negative_pressure=false)
 
-boundary_density_calculator = AdamiPressureExtrapolation()
+boundary_density_calculator = PressureBoundaries(; omega=omega, time_step=time_step)
 
 boundary_model = BoundaryModelDummyParticles(boundary.density, boundary.mass,
                                              boundary_density_calculator,
@@ -112,8 +112,8 @@ semi = Semidiscretization(fluid_system, boundary_system,
 
 ode = semidiscretize(semi, tspan)
 
-saving_paper = SolutionSavingCallback(save_times=[0.0, 0.2, 0.3, 0.4, 0.5, 0.6, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation",
-                                      prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder_AdamiPressureExtrapolation2")
+saving_paper = SolutionSavingCallback(save_times=[0.0, 0.5, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/LowOmega",
+                                      prefix="IISPH_PressureBoundaries_PeriodicCylinder_low_omega")
 
 
 info_callback = InfoCallback(interval=10000)

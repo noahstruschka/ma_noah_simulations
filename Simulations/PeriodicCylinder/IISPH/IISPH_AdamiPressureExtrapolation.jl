@@ -112,8 +112,8 @@ semi = Semidiscretization(fluid_system, boundary_system,
 
 ode = semidiscretize(semi, tspan)
 
-saving_paper = SolutionSavingCallback(save_times=[0.0, 0.2, 0.3, 0.4, 0.5, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/With_Shifting",
-                                      prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting")
+saving_paper = SolutionSavingCallback(save_times=[0.0, 0.2, 0.3, 0.4, 0.5, 1.5, 2.5, 5.0].*time_factor, output_directory="Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation",
+                                      prefix="IISPH_AdamiPressureExtrapolation_PeriodicCylinder")
 
 
 info_callback = InfoCallback(interval=10000)
