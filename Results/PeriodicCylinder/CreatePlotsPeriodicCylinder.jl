@@ -20,12 +20,9 @@ save_files = true
 # the time span of the simulations in "Simulations/PeriodicCylinder to (0, 5.0 * time factor).
 # By default the simulation only runs to T=2.5.
 
-# Figure 5.3 - Comparison of the velocity magnitude |v|
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_27778.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting1", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_33334.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting2", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_83335.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting3", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_138891.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting4", save_files)
-# Figure 5.3 (b) WCSPH - without Shifting
+# Figure 5.4 - Comparison of the velocity magnitude |v|
+
+# Figure 5.4 (b) WCSPH - without Shifting
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_2370.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting1", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_7491.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting2", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_12583.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting3", save_files)
@@ -35,48 +32,32 @@ plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_Per
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_1894.vtu", "WCSPH/WCSPH_PeriodicCylinder_No_Shifting7", save_files)
 #plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/No_Shifting/WCSPH_NoShifting_PeriodicCylinder_fluid_1_500.vtu", "WCSPH/WCSPH_PeriodicCylinder_PressureZeroing8", save_files)
 
-# # Figure 5.3 (c) WCSPH - with Shifting
-plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/Only_Shifting/WCSPH_OnlyShifting_PeriodicCylinder_fluid_1_2138.vtu", "WCSPH/WCSPH_PeriodicCylinder_Only_Shifting1", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/Only_Shifting/WCSPH_OnlyShifting_PeriodicCylinder_fluid_1_6446.vtu", "WCSPH/WCSPH_PeriodicCylinder_Only_Shifting2", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/Only_Shifting/WCSPH_OnlyShifting_PeriodicCylinder_fluid_1_10778.vtu", "WCSPH/WCSPH_PeriodicCylinder_Only_Shifting3", save_files)
-#plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/Only_Shifting/WCSPH_OnlyShifting_PeriodicCylinder_fluid_1_500.vtu", "WCSPH/WCSPH_PeriodicCylinder_Only_Shifting4", save_files)
-
-# Figure 5.3 (d) WCSPH - with Shifting and TIC
+# Figure 5.4 (c) WCSPH - with Shifting and TIC
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/Shifting_TIC/WCSPH_ShiftingTIC_PeriodicCylinder_fluid_1_2101.vtu", "WCSPH/WCSPH_PeriodicCylinder_Shifting_TIC1", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/Shifting_TIC/WCSPH_ShiftingTIC_PeriodicCylinder_fluid_1_6267.vtu", "WCSPH/WCSPH_PeriodicCylinder_Shifting_TIC2", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/Shifting_TIC/WCSPH_ShiftingTIC_PeriodicCylinder_fluid_1_10395.vtu", "WCSPH/WCSPH_PeriodicCylinder_Shifting_TIC3", save_files)
 #plot_cylinder_2d("Output/PeriodicCylinder/WCSPH/Shifting_TIC/WCSPH_ShiftingTIC_PeriodicCylinder_fluid_1_5005.vtu", "WCSPH/WCSPH_PeriodicCylinder_Shifting_TIC4", save_files)
 
-# Figure 5.3 (e) IISPH - Pressure Zeroing
+# Figure 5.4 (d) IISPH - Pressure Zeroing
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureZeroing/IISPH_PressureZeroing_PeriodicCylinder_fluid_1_27778.vtu", "IISPH/IISPH_PeriodicCylinder_PressureZeroing1", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureZeroing/IISPH_PressureZeroing_PeriodicCylinder_fluid_1_83334.vtu", "IISPH/IISPH_PeriodicCylinder_PressureZeroing2", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureZeroing/IISPH_PressureZeroing_PeriodicCylinder_fluid_1_138890.vtu", "IISPH/IISPH_PeriodicCylinder_PressureZeroing3", save_files)
 #plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureZeroing/IISPH_PressureZeroing_PeriodicCylinder_fluid_1_5005.vtu", "IISPH/IISPH_PeriodicCylinder_PressureZeroing4", save_files)
 
-# # Figure 5.3 (f) IISPH - Pressure Mirroring
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureMirroring/IISPH_PressureMirroring_PeriodicCylinder_fluid_1_27800.vtu", "IISPH/IISPH_PeriodicCylinder_PressureMirroring1", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureMirroring/IISPH_PressureMirroring_PeriodicCylinder_fluid_1_83401.vtu", "IISPH/IISPH_PeriodicCylinder_PressureMirroring2", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureMirroring/IISPH_PressureMirroring_PeriodicCylinder_fluid_1_139001.vtu", "IISPH/IISPH_PeriodicCylinder_PressureMirroring3", save_files)
-#plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureMirroring/IISPH_PressureMirroring_PeriodicCylinder_fluid_1_5005.vtu", "IISPH/IISPH_PeriodicCylinder_PressureMirroring4", save_files)
-
-# Figure 5.3 (g) IISPH - Adami Pressure Extrapolation
+# Figure 5.3 (e) IISPH - Adami Pressure Extrapolation
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_fluid_1_27800.vtu", "IISPH/IISPH_PeriodicCylinder_AdamiPressureExtrapolation1", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_fluid_1_83401.vtu", "IISPH/IISPH_PeriodicCylinder_AdamiPressureExtrapolation2", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_fluid_1_139001.vtu", "IISPH/IISPH_PeriodicCylinder_AdamiPressureExtrapolation3", save_files)
 #plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_fluid_1_5005.vtu", "IISPH/IISPH_PeriodicCylinder_AdamiPressureExtrapolation4", save_files)
 
-# Figure 5.3 (h) IISPH - Pressure Boundaries
+# Figure 5.3 (f) IISPH - Pressure Boundaries
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureBoundaries/IISPH_PressureBoundaries_PeriodicCylinder_fluid_1_27778.vtu", "IISPH/IISPH_PeriodicCylinder_PressureBoundaries1", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureBoundaries/IISPH_PressureBoundaries_PeriodicCylinder_fluid_1_83334.vtu", "IISPH/IISPH_PeriodicCylinder_PressureBoundaries2", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureBoundaries/IISPH_PressureBoundaries_PeriodicCylinder_fluid_1_138890.vtu", "IISPH/IISPH_PeriodicCylinder_PressureBoundaries3", save_files)
 #plot_cylinder_2d("Output/PeriodicCylinder/IISPH/PressureBoundaries/IISPH_PressureBoundaries_PeriodicCylinder_fluid_1_5005.vtu", "IISPH/IISPH_PeriodicCylinder_PressureBoundaries4", save_files)
 
-
+# Figure 5.8 IISPH with Shifting technique
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_27778.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting1", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_33334.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting2", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_83335.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting3", save_files)
 plot_cylinder_2d("Output/PeriodicCylinder/IISPH/With_Shifting/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_Shifting_fluid_1_138891.vtu", "IISPH/IISPH_PeriodicCylinder_Shifting4", save_files)
-
-
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_AdamiPressureExtrapolation2_fluid_1_138893.vtu", "IISPH/IISPH_APE_Omega_04", save_files)
-plot_cylinder_2d("Output/PeriodicCylinder/IISPH/AdamiPressureExtrapolation/IISPH_AdamiPressureExtrapolation_PeriodicCylinder_AdamiPressureExtrapolation3_fluid_1_138893.vtu", "IISPH/IISPH_APE_Omega_05", save_files)
