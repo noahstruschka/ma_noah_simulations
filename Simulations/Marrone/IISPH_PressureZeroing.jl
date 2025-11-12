@@ -34,7 +34,7 @@ viscosity = ViscosityAdami(; nu)
 
 # IISPH parameters
 time_step = 0.0002
-omega = 0.5
+omega = 0.1
 min_iterations = 2
 max_iterations = 100
 max_error = 0.1

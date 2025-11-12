@@ -262,7 +262,7 @@ function plot_cylinder_2d(file_directory, file_name, save_fig)
 end
 
 # Plotting function for the 2d periodic cylinder example
-function plot_cylinder_2d(file_directory, file_name, save_fig)
+function plot_cylinder_2d_discrete(file_directory, file_name, save_fig)
 
         # get the required values from the initial condition
         ic = vtk2trixi(file_directory)

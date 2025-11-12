@@ -67,7 +67,7 @@ smoothing_kernel = SchoenbergCubicSplineKernel{2}()
 
 # IISPH parameters
 time_step = 0.003
-omega = 0.3
+omega = 0.1
 min_iterations = 1
 max_iterations = 100
 max_error = 0.1
