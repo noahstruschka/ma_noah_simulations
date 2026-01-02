@@ -11,7 +11,7 @@ The repository is organized into the following main folders, each serving a spec
   - **`PeriodicCylinder/`** – Periodic Cylinder examples for comparison with S. Adami, X.Y. Hu, and N.A. Adams (Section 5.2)
   - **`Performance/`** – Simulations used to reproduce the tables in Chapter 5
 
-  All simulations are created and run using the `trixi_include` function from TrixiParticles.jl. For example:
+All simulations are created and run using the `trixi_include` function from TrixiParticles.jl. For example:
 
 ```julia
     using Trixi
