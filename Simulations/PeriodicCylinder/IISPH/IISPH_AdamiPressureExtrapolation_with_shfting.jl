@@ -1,3 +1,6 @@
+# Figure 5.8 - Does not work in the current public TrixiParticles version as shifting
+# technique is not yet an keyword argument for IISPH
+
 # ==========================================================================================
 # 2D Channel Flow Through a Periodic Array of Cylinders
 #

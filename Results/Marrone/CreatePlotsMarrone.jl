@@ -8,7 +8,7 @@
 
 using Plots
 
-include("../../PlottingFiles/PlotFunctions.jl")
+include("../../Plotting/PlotFunctions.jl")
 
 
 # Set to false if you do not want to save all the plots

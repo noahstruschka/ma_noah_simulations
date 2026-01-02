@@ -1,6 +1,6 @@
 using Plots
 
-include("../../PlottingFiles/PlotFunctions.jl")
+include("../../Plotting/PlotFunctions.jl")
 
 # Set this to true if you want to safe these files too
 save_files = true

@@ -7,7 +7,7 @@
 # doi = {https://doi.org/10.1016/j.jcp.2013.01.043
 
 using Plots
-include("../../PlottingFiles/PlotFunctions.jl")
+include("../../Plotting/PlotFunctions.jl")
 
 # Set to false if you do not want to solve all the files
 save_files = true

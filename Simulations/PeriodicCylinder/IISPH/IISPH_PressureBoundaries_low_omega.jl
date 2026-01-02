@@ -1,3 +1,5 @@
+# Figure 5.7
+
 # ==========================================================================================
 # 2D Channel Flow Through a Periodic Array of Cylinders
 #

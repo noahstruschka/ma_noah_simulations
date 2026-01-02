@@ -1,11 +1,10 @@
 using Plots
 
-include("../../PlottingFiles/PlotFunctions.jl")
+include("../../Plotting/PlotFunctions.jl")
 
 
 # Set to false if you do not want to save all the plots
 save_files = true
-
 
 
 plot_dam_break_close("Output/Marrone/IISPH/PressureZeroing/IISPH_PressureZeroing_Marrone_fluid_1_7050.vtu",

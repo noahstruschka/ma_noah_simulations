@@ -1,3 +1,5 @@
+# Figure 5.1 (c) and 5.3 (c)
+
 # Add neccessary packages
 using TrixiParticles
 using OrdinaryDiffEq
@@ -34,7 +36,7 @@ viscosity = ViscosityAdami(; nu)
 
 # IISPH parameters
 time_step = 0.0002
-omega = 0.1
+omega = 0.5
 min_iterations = 2
 max_iterations = 100
 max_error = 0.1

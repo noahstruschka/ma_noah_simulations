@@ -1,4 +1,4 @@
-# Figure 5.1 (f) and 5.3 (f)
+# Figure 5.2
 
 # Add neccessary packages
 using TrixiParticles
@@ -36,7 +36,7 @@ viscosity = ViscosityAdami(; nu)
 
 # IISPH parameters
 time_step = 0.0002
-omega = 0.5
+omega = 0.1
 min_iterations = 2
 max_iterations = 100
 max_error = 0.1
@@ -52,7 +52,7 @@ fluid_system = ImplicitIncompressibleSPHSystem(tank.fluid, smoothing_kernel,
                                                omega=omega,
                                                time_step=time_step)
 
-boundary_density_calculator=PressureBoundaries(; time_step=time_step, omega=omega)
+boundary_density_calculator=PressureZeroing()
 
 
 # ==========================================================================================
@@ -60,7 +60,7 @@ boundary_density_calculator=PressureBoundaries(; time_step=time_step, omega=omeg
 min_corner = minimum(tank.boundary.coordinates, dims=2)
 max_corner = maximum(tank.boundary.coordinates, dims=2)
 cell_list = FullGridCellList(; min_corner, max_corner)
-neighborhood_search = GridNeighborhoodSearch{2}(; cell_list, update_strategy=ParallelUpdate())
+neighborhood_search = GridNeighborhoodSearch{2}(; cell_list,update_strategy=ParallelUpdate())
 
 # ==========================================================================================
 # Overwrite the saving_callback such that we only get the first and the last time step as
@@ -71,8 +71,8 @@ saving_callback = SolutionSavingCallback(dt=100, prefix=solution_prefix)
 # Note that the images in Marrone et al. are obtained with `particles_per_height = 320`.
 
 saving_paper = SolutionSavingCallback(save_times=[0.0, 1.5, 2.36, 3.0, 5.7, 6.45] ./
-                                                 sqrt(gravity / H), output_directory="Output/Marrone/IISPH/PressureBoundaries",
-                                      prefix="IISPH_PressureBoundaries_Marrone")
+                                                 sqrt(gravity / H), output_directory="Output/Marrone/IISPH/PressureZeroing",
+                                      prefix="IISPH_PressureZeroing_Marrone_low_omega")
 
 # Overwrite the callbacks
 callbacks = CallbackSet(info_callback, saving_callback, saving_paper)

@@ -1,3 +1,5 @@
+# Table 5.2 (and 5.3 if you modify the variable time_step)
+
 # Add neccessary packages
 using TrixiParticles
 using OrdinaryDiffEq

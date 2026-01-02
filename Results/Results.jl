@@ -1,4 +1,4 @@
-# Create the plots that are being shown in the  thesis
+# Create the plots that are being shown in the thesis
 
 
 # Create outputs for the comparison with the paper from Marrone et al. in chapter 5.1

@@ -1,3 +1,5 @@
+# Figure 5.1 (d) and 5.3 (d)
+
 # Add neccessary packages
 using TrixiParticles
 using OrdinaryDiffEq

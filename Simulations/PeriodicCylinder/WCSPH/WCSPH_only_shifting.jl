@@ -1,3 +1,5 @@
+# Not represented in the thesis
+
 # Add neccessary packages
 using TrixiParticles
 using OrdinaryDiffEq
