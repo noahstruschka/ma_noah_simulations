@@ -16,14 +16,14 @@ The repository is organized into the following main folders, each serving a spec
   ```julia
     using Trixi
     trixi_include("examples/fluid/dam_break_2d.jl")
-````
+```
 and variables in the elixir can be overwritten by passing keyword arguments, e.g.,
 
 ```julia
     using Trixi
     trixi_include("examples/fluid/dam_break_2d.jl",
                 fluid_particle_spacing=0.015,
-                smoothing_length=1,25*fluid_particle_spacing)
+                smoothing_length=1.25*fluid_particle_spacing)
 ```
 
 - **`Output/`** – Stores the `.vtk` files generated as outputs from the simulations.
