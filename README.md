@@ -19,7 +19,7 @@ The repository is organized into the following main folders, each serving a spec
 ```
 and variables in the elixir can be overwritten by passing keyword arguments, e.g.,
 
-```julia
+  ```julia
     using Trixi
     trixi_include("examples/fluid/dam_break_2d.jl",
                 fluid_particle_spacing=0.015,
