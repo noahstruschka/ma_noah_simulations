@@ -16,9 +16,7 @@ The repository is organized into the following main folders, each serving a spec
   ```julia
     using Trixi
     trixi_include("examples/fluid/dam_break_2d.jl")
-```
 
-```julia
     using Trixi
     trixi_include("examples/fluid/dam_break_2d.jl",
                 fluid_particle_spacing=0.015,
