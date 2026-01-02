@@ -17,7 +17,7 @@ The repository is organized into the following main folders, each serving a spec
     using Trixi
     trixi_include("examples/fluid/dam_break_2d.jl")
 ```
-and variables in the elixir can be overwritten by passing keyword arguments, e.g.,
+  and variables in the elixir can be overwritten by passing keyword arguments, e.g.,
 
 ```julia
     using Trixi
